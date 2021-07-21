@@ -1,0 +1,22 @@
+package com.algaworks.junit;
+
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+public class EntendendoJUnitTest {
+	
+	@BeforeClass
+	public static void iniciarTestes() {
+		System.out.println(">>>> public static void iniciarTestes() <<<<");
+	}
+
+	@Test
+	public void testandoAlgo() {
+		System.out.println(">>>> public void testandoAlgo() <<<<");
+	}
+	
+	@Test
+	public void testandoOutraCoisa() {
+		System.out.println(">>>> public void testandoOutraCoisa() <<<<");
+	}
+}
