@@ -3,8 +3,13 @@ package com.algaworks.ecommerce.model;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Produto {
 
+	@Id
 	private Integer id;
 
 	private String nome;
