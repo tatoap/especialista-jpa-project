@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -12,6 +13,7 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
+@Table(name = "produto")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Produto {
 

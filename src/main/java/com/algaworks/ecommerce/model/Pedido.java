@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -13,6 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(name = "pedido")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Pedido {
 	

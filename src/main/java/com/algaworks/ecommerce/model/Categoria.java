@@ -1,7 +1,9 @@
 package com.algaworks.ecommerce.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -10,6 +12,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
+@Table(name = "categoria")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Categoria {
 
@@ -19,5 +22,6 @@ public class Categoria {
 	
 	private String nome;
 	
+	@Column(name = "categoria_pai_id")
 	private Integer categoriaPaiId;
 }
