@@ -11,6 +11,95 @@ import com.algaworks.ecommerce.model.Produto;
 public class OperacoesComTransacaoTest extends EntityManagerTest {
 	
 	@Test
+	public void mostrarDiferencaPersistMerge() {
+		Produto produtoPersist = new Produto();
+		
+		produtoPersist.setId(5);
+		produtoPersist.setNome("Smartphone One Plus");
+		produtoPersist.setDescricao("O processador mais rápido");
+		produtoPersist.setPreco(new BigDecimal(2000));
+		
+		entityManager.getTransaction().begin();
+		entityManager.persist(produtoPersist);
+		produtoPersist.setNome("Smartphone Two Plus");
+		entityManager.getTransaction().commit();
+		
+		entityManager.clear();
+		
+		Produto ProdutoVerificacaoPersist = entityManager.find(Produto.class, produtoPersist.getId());
+		Assert.assertNotNull(ProdutoVerificacaoPersist);
+		
+		Produto produtoMerge = new Produto();
+		
+		produtoMerge.setId(6);
+		produtoMerge.setNome("Notebook Dell");
+		produtoMerge.setDescricao("O melhor da categoria");
+		produtoMerge.setPreco(new BigDecimal(2000));
+		
+		entityManager.getTransaction().begin();
+		produtoMerge = entityManager.merge(produtoMerge);
+		produtoMerge.setNome("Notebook Dell 2");
+		entityManager.getTransaction().commit();
+		
+		entityManager.clear();
+		
+		Produto ProdutoVerificacaoMerge = entityManager.find(Produto.class, produtoMerge.getId());
+		Assert.assertNotNull(ProdutoVerificacaoMerge);
+	}
+	
+	@Test
+	public void inserirObjetoComMerge() {
+		Produto produto = new Produto();
+		
+		produto.setId(4);
+		produto.setNome("Microfone Rode Videmic");
+		produto.setDescricao("A melhor qualidade de som!");
+		produto.setPreco(new BigDecimal(1000));
+		
+		entityManager.getTransaction().begin();
+		entityManager.merge(produto);
+		entityManager.getTransaction().commit();
+		
+		entityManager.clear();
+		
+		Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+		Assert.assertNotNull(produtoVerificacao);
+	}
+	
+	@Test
+	public void atualizarObjetoGerenciado() {
+		Produto produto = entityManager.find(Produto.class, 1);
+		
+		entityManager.getTransaction().begin();
+		produto.setNome("Kindle Paperwhite 2ª Geração");
+		entityManager.getTransaction().commit();
+		
+		entityManager.clear();
+		
+		Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+		Assert.assertEquals("Kindle Paperwhite 2ª Geração", produtoVerificacao.getNome());
+	}
+	
+	@Test
+	public void atualizarObjeto() {
+		Produto produto = entityManager.find(Produto.class, 1);
+		
+		produto.setId(1);
+		produto.setNome("Kindle Paperwhite");
+		produto.setDescricao("Conheça o novo kindle");
+		produto.setPreco(new BigDecimal(599));
+		
+		entityManager.getTransaction().begin();
+		entityManager.merge(produto);
+		entityManager.getTransaction().commit();
+		
+		entityManager.clear();
+		
+		Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
+		Assert.assertEquals("Kindle Paperwhite", produtoVerificacao.getNome());
+	}
+	
+	@Test
 	public void removerObjeto() {
 		Produto produto = entityManager.find(Produto.class, 3);
 		
@@ -41,19 +130,18 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 		
 		Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
 		Assert.assertNotNull(produtoVerificacao);
-		
 	}
 
 	@Test
 	public void abrirFecharTransacao() {
 		
-		Produto produto = new Produto(); // Somente para o metodo não mostrar erro
+		//Produto produto = new Produto(); // Somente para o metodo não mostrar erro
 		
 		entityManager.getTransaction().begin();
 		
-		entityManager.persist(produto);
-		entityManager.merge(produto);
-		entityManager.remove(produto);
+		//entityManager.persist(produto);
+		//entityManager.merge(produto);
+		//entityManager.remove(produto);
 		
 		entityManager.getTransaction().commit();
 	}
