@@ -7,18 +7,17 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
-@EqualsAndHashCode(of = {"id"})
-public class Cliente {
-	
+@Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class Categoria {
+
 	@Id
-	//@EqualsAndHashCode.Include
+	@EqualsAndHashCode.Include
 	private Integer id;
 	
 	private String nome;
 	
-	private SexoCliente sexo;
-
+	private Integer categoriaPaiId;
 }

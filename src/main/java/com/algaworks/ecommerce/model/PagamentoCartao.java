@@ -1,24 +1,23 @@
 package com.algaworks.ecommerce.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Id;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
 @Getter
 @Setter
-@EqualsAndHashCode(of = {"id"})
-public class Cliente {
+@Entity
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+public class PagamentoCartao {
 	
-	@Id
-	//@EqualsAndHashCode.Include
 	private Integer id;
 	
-	private String nome;
+	private Integer pedidoId;
 	
-	private SexoCliente sexo;
+	private StatusPagamento status;
+	
+	private String numeroCartao;
 
 }
