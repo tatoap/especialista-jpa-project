@@ -19,7 +19,7 @@ public class PrimeiroCrudTest extends EntityManagerTest {
 	public void inserirObjeto() {
 		Cliente cliente = new Cliente();
 		
-		cliente.setId(3);
+		//cliente.setId(3); foi comentado porque estamos usando a estratégia IDENTITY
 		cliente.setNome("Henrique Ramos");
 		
 		entityManager.getTransaction().begin();
@@ -36,7 +36,7 @@ public class PrimeiroCrudTest extends EntityManagerTest {
 	public void alterarObjeto() {
 		Cliente clienteMerge = entityManager.find(Cliente.class, 1);
 		
-		clienteMerge.setId(1);
+		//clienteMerge.setId(1); foi comentado porque estamos usando a estratégia IDENTITY
 		clienteMerge.setNome("Eliana Rodrigues");
 		
 		entityManager.getTransaction().begin();

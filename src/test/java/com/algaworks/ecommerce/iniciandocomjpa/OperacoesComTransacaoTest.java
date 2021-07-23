@@ -29,7 +29,7 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 	public void mostrarDiferencaPersistMerge() {
 		Produto produtoPersist = new Produto();
 		
-		produtoPersist.setId(5);
+		//produtoPersist.setId(5); foi comentado porque estamos usando a estratégia IDENTITY
 		produtoPersist.setNome("Smartphone One Plus");
 		produtoPersist.setDescricao("O processador mais rápido");
 		produtoPersist.setPreco(new BigDecimal(2000));
@@ -46,7 +46,7 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 		
 		Produto produtoMerge = new Produto();
 		
-		produtoMerge.setId(6);
+		//produtoMerge.setId(6); foi comentado porque estamos usando a estratégia IDENTITY
 		produtoMerge.setNome("Notebook Dell");
 		produtoMerge.setDescricao("O melhor da categoria");
 		produtoMerge.setPreco(new BigDecimal(2000));
@@ -66,13 +66,13 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 	public void inserirObjetoComMerge() {
 		Produto produto = new Produto();
 		
-		produto.setId(4);
+		//produto.setId(4); foi comentado porque estamos usando a estratégia IDENTITY
 		produto.setNome("Microfone Rode Videmic");
 		produto.setDescricao("A melhor qualidade de som!");
 		produto.setPreco(new BigDecimal(1000));
 		
 		entityManager.getTransaction().begin();
-		entityManager.merge(produto);
+		produto = entityManager.merge(produto);
 		entityManager.getTransaction().commit();
 		
 		entityManager.clear();
@@ -99,7 +99,7 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 	public void atualizarObjeto() {
 		Produto produto = entityManager.find(Produto.class, 1);
 		
-		produto.setId(1);
+		// produto.setId(1); foi comentado porque estamos usando a estratégia IDENTITY
 		produto.setNome("Kindle Paperwhite");
 		produto.setDescricao("Conheça o novo kindle");
 		produto.setPreco(new BigDecimal(599));
@@ -132,7 +132,7 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
 	public void inserirPrimeiroObjeto() {
 		Produto produto = new Produto();
 		
-		produto.setId(2);
+		// produto.setId(2); foi comentado porque estamos usando a estratégia IDENTITY
 		produto.setNome("Câmera Canon");
 		produto.setDescricao("A melhor definição para as suas fotos!");
 		produto.setPreco(new BigDecimal(5000));
