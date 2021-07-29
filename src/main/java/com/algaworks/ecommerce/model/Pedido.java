@@ -2,6 +2,7 @@ package com.algaworks.ecommerce.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -13,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
@@ -44,11 +47,17 @@ public class Pedido {
 	@Column(name = "data_conclusao")
 	private LocalDateTime dataConclusao;
 	
-	@Column(name = "nota_fiscal_id")
-	private Integer notaFiscalId;
+	@OneToOne(mappedBy = "pedido")
+	private NotaFiscal notaFiscal;
 	
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
+	
+	@OneToOne(mappedBy = "pedido")
+	private PagamentoCartao pagamento;
+	
+	@OneToMany(mappedBy = "pedido")
+	private List<ItemPedido> itensPedido;
 	
 	private BigDecimal total;
 
