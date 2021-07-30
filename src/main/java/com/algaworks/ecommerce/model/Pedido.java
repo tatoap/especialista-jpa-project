@@ -9,6 +9,7 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,9 +35,12 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
+	
+	@OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER)
+	private List<ItemPedido> itensPedido;
 	
 	@Embedded
 	private EnderecoPedidoEntrega enderecoPedido;
@@ -55,9 +59,6 @@ public class Pedido {
 	
 	@OneToOne(mappedBy = "pedido")
 	private PagamentoCartao pagamento;
-	
-	@OneToMany(mappedBy = "pedido")
-	private List<ItemPedido> itensPedido;
 	
 	private BigDecimal total;
 
