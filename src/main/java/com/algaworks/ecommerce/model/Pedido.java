@@ -34,7 +34,7 @@ public class Pedido {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@ManyToOne(optional = false) // por padrão é "true", o que é menos performatico pois a relação é left outer join, como "false" é inner join
+	@ManyToOne(optional = false) // por padrão é "true", o que é menos performatico pois a relação é left outer join, como "false" é inner join, deve ser alterado para todos os atributos que são obrigatórios para persistência
 	@JoinColumn(name = "cliente_id")
 	private Cliente cliente;
 	
