@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
@@ -33,6 +34,9 @@ public class Produto {
 	private String descricao;
 
 	private BigDecimal preco;
+	
+	@OneToOne(mappedBy = "produto")
+	private Estoque estoque;
 	
 	@ManyToMany
 	@JoinTable(name = "produto_categoria", 
