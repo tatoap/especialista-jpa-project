@@ -1,4 +1,4 @@
-package com.algaworks.ecommerce.conhecendoentitymanager.mapeamentoavancado;
+package com.algaworks.ecommerce.mapeamentoavancado;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
