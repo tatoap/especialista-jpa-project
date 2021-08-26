@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +13,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.algaworks.ecommerce.listener.GenericoListener;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -22,6 +25,7 @@ import lombok.Setter;
 @Setter
 @Table(name = "produto")
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EntityListeners({ GenericoListener.class })
 public class Produto {
 
 	@Id
