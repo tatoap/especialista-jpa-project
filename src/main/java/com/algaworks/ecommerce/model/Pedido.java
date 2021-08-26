@@ -16,6 +16,13 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.PostLoad;
+import javax.persistence.PostPersist;
+import javax.persistence.PostRemove;
+import javax.persistence.PostUpdate;
+import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
+import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
@@ -42,17 +49,19 @@ public class Pedido {
 	@OneToMany(mappedBy = "pedido")
 	private List<ItemPedido> itensPedido;
 	
-	@Embedded
-	private EnderecoPedidoEntrega enderecoPedido;
-	
-	@Column(name = "data_pedido")
-	private LocalDateTime dataPedido;
-	
-	@Column(name = "data_conclusao")
-	private LocalDateTime dataConclusao;
-	
-	@OneToOne(mappedBy = "pedido")
+	@Column(name = "data_criacao")
+    private LocalDateTime dataCriacao;
+
+    @Column(name = "data_ultima_atualizacao")
+    private LocalDateTime dataUltimaAtualizacao;
+
+    @Column(name = "data_conclusao")
+    private LocalDateTime dataConclusao;
+    
+    @OneToOne(mappedBy = "pedido")
 	private NotaFiscal notaFiscal;
+	
+	private BigDecimal total;
 	
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
@@ -60,6 +69,52 @@ public class Pedido {
 	@OneToOne(mappedBy = "pedido")
 	private PagamentoCartao pagamento;
 	
-	private BigDecimal total;
-
+	@Embedded
+	private EnderecoPedidoEntrega enderecoPedido;
+	
+	//@PrePersist
+	//@PreUpdate
+	public void calcularTotal() {
+		if (itensPedido != null) {
+			total = itensPedido.stream().map(ItemPedido::getPrecoProduto)
+					.reduce(BigDecimal.ZERO, BigDecimal::add);
+		}
+	}
+	
+	@PrePersist
+	public void aoPersistir() {
+		dataCriacao = LocalDateTime.now();
+		calcularTotal();
+	}
+	
+	@PreUpdate
+	public void aoAtualizar() {
+		dataUltimaAtualizacao = LocalDateTime.now();
+		calcularTotal();
+	}
+	
+	@PostPersist
+	public void aposPersistir() {
+		System.out.println("Após persistir pedido.");
+	}
+	
+	@PostUpdate
+	public void aposAtualizar() {
+		System.out.println("Após atualizar pedido");
+	}
+	
+	@PreRemove
+	public void aoRemover() {
+		System.out.println("Antes de remover pedido.");
+	}
+	
+	@PostRemove
+	public void aposRemover() {
+		System.out.println("Após remover pedido.");
+	}
+	
+	@PostLoad
+	public void aoCarregar() {
+		System.out.println("Após carregar o pedido.");
+	}
 }

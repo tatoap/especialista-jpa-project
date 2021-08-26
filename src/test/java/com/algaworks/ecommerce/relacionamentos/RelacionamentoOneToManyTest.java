@@ -22,7 +22,7 @@ public class RelacionamentoOneToManyTest extends EntityManagerTest {
 		Pedido pedido = new Pedido();
 		
 		pedido.setStatus(StatusPedido.AGUARDANDO);
-		pedido.setDataPedido(LocalDateTime.now());
+		pedido.setDataCriacao(LocalDateTime.now());
 		pedido.setTotal(BigDecimal.TEN);
 		pedido.setCliente(cliente);
 		
@@ -42,7 +42,7 @@ public class RelacionamentoOneToManyTest extends EntityManagerTest {
 		Produto produto = entityManager.find(Produto.class, 1);
 		
 		Pedido pedido = new Pedido();
-		pedido.setDataPedido(LocalDateTime.now());
+		pedido.setDataCriacao(LocalDateTime.now());
 		pedido.setStatus(StatusPedido.AGUARDANDO);
 		pedido.setTotal(BigDecimal.TEN);
 		pedido.setCliente(cliente);
