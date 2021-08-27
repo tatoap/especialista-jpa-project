@@ -58,10 +58,15 @@ public class Produto {
 			inverseJoinColumns = @JoinColumn(name = "categoria_id"))
 	private List<Categoria> categorias;
 	
-	@ElementCollection
-	@CollectionTable(name = "produto_tag",
+	@ElementCollection // para que o JPA gerencie essa propriedade
+	@CollectionTable(name = "produto_tag", // ele cria uma outra tabela para essa propriedade
 			joinColumns = @JoinColumn(name = "produto_id"))
 	@Column(name = "tag")
 	private List<String> tags;
+	
+	@ElementCollection
+	@CollectionTable(name = "produto_atributo",
+			joinColumns = @JoinColumn(name = "produto_id"))
+	private List<Atributo> atributos;
 
 }
