@@ -33,7 +33,7 @@ public class MapsIdTest extends EntityManagerTest {
 		
 		NotaFiscal notaFiscalVerificacao = entityManager.find(NotaFiscal.class, notaFiscal.getId());
 		Assert.assertNotNull(notaFiscalVerificacao);
-		Assert.assertEquals(pedido.getId(), notaFiscalVerificacao.getId());
+		Assert.assertEquals(pedido.getId(), notaFiscalVerificacao.getId()); // verifica se o id do pedido é igual ao id da nota fiscal, pois esse relacionamento é um-para-um e não se repetem
 	}
 	
 	@Test
