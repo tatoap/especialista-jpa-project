@@ -3,9 +3,8 @@ package com.algaworks.ecommerce.model;
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -18,19 +17,12 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "item_pedido")
-@IdClass(ItemPedidoId.class)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class ItemPedido {
 	
-	@Id
-	@Column(name = "pedido_id")
-	@EqualsAndHashCode.Include
-	private Integer pedidoId;
-	
-	@Id
-	@Column(name = "produto_id")
-	@EqualsAndHashCode.Include
-	private Integer produtoId;
+
+	@EmbeddedId
+	private ItemPedidoId id;
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "pedido_id", insertable = false, updatable = false)
