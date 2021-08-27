@@ -31,7 +31,7 @@ public class Cliente {
 	
 	private String nome;
 	
-	@Transient // essa marcação faz com que o JPA ignore esse atributo
+	@Transient // essa marcação faz com que o JPA ignore essa propriedade
 	private String primeiroNome;
 	
 	@Enumerated(EnumType.STRING)

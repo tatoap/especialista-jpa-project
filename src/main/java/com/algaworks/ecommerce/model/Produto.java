@@ -4,7 +4,9 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
@@ -55,5 +57,11 @@ public class Produto {
 			joinColumns = @JoinColumn(name = "produto_id"),
 			inverseJoinColumns = @JoinColumn(name = "categoria_id"))
 	private List<Categoria> categorias;
+	
+	@ElementCollection
+	@CollectionTable(name = "produto_tag",
+			joinColumns = @JoinColumn(name = "produto_id"))
+	@Column(name = "tag")
+	private List<String> tags;
 
 }
