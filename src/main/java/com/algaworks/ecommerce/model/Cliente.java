@@ -9,7 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.PostLoad;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -29,6 +31,9 @@ public class Cliente {
 	
 	private String nome;
 	
+	@Transient // essa marcação faz com que o JPA ignore esse atributo
+	private String primeiroNome;
+	
 	@Enumerated(EnumType.STRING)
 	private SexoCliente sexo;
 
@@ -36,4 +41,14 @@ public class Cliente {
 	// como manytoone para cliente
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> pedidos;
+	
+	@PostLoad
+	public void configurarPrimeiroNome() {
+		if (nome != null && !nome.isBlank()) {
+			int index = nome.indexOf(" ");
+			if (index > -1) {
+				this.primeiroNome = nome.substring(0, index);
+			}
+		}
+	}
 }
