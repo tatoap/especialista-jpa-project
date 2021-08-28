@@ -17,13 +17,13 @@ import com.algaworks.ecommerce.model.Produto;
 public class MapsIdTest extends EntityManagerTest {
 	
 	@Test
-	public void inserirPagament() {
+	public void inserirPagamento() {
 		Pedido pedido = entityManager.find(Pedido.class, 1);
 		
 		NotaFiscal notaFiscal = new NotaFiscal();
 		notaFiscal.setPedido(pedido);
 		notaFiscal.setDataEmissao(new Date());
-		notaFiscal.setXml("<xml/>");
+		//notaFiscal.setXml("<xml/>");
 		
 		entityManager.getTransaction().begin();
 		entityManager.persist(notaFiscal);

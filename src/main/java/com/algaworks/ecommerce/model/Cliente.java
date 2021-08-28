@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.model;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.PostLoad;
+import javax.persistence.PrimaryKeyJoinColumn;
+import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -28,6 +31,7 @@ import lombok.Setter;
 @Entity
 @Table(name = "cliente")
 @EqualsAndHashCode(of = {"id"})
+@SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id")) // permite trazer para uma entidade valores que estão em duas tabelas
 public class Cliente {
 	
 	@Id
@@ -47,8 +51,12 @@ public class Cliente {
 	@Transient // essa marcação faz com que o JPA ignore essa propriedade
 	private String primeiroNome;
 	
+	@Column(table = "cliente_detalhe")
 	@Enumerated(EnumType.STRING)
 	private SexoCliente sexo;
+	
+	@Column(name = "data_nascimento", table = "cliente_detalhe")
+	private LocalDate dataNascimento;
 
 	// esse mapeamento não é necessário. já que na tabela de pedidos esta mapeado
 	// como manytoone para cliente
