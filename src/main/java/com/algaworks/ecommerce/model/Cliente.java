@@ -10,6 +10,7 @@ import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.Index;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapKeyColumn;
 import javax.persistence.OneToMany;
@@ -18,6 +19,7 @@ import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.SecondaryTable;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -25,12 +27,16 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "cliente")
+@Table(name = "cliente", 
+		uniqueConstraints = { @UniqueConstraint(name = "unq_cpf", columnNames = { "cpf" }) }, // anota uma coluna como unique na tabela
+		indexes = { @Index(name = "idx_nome", columnList = "nome") }) // para organizar uma coluna da tabela para buscar de uma forma mais agil
 //@EqualsAndHashCode(of = {"id"})
 @SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id")) // permite trazer para uma entidade valores que estão em duas tabelas
 public class Cliente extends EntidadeBaseInteger {
 	
 	private String nome;
+	
+	private String cpf;
 	
 	@ElementCollection
 	@CollectionTable(name = "cliente_contato",
