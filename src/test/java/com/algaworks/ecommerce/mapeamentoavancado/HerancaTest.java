@@ -31,7 +31,7 @@ public class HerancaTest extends EntityManagerTest {
 		entityManager.clear();
 		
 		Cliente clienteVerificacao = entityManager.find(Cliente.class, cliente.getId());
-		Assert.assertNotNull(clienteVerificacao.getNome());
+		Assert.assertNotNull(clienteVerificacao.getId());
 	}
 	
 	@Test
