@@ -32,19 +32,18 @@ import lombok.Setter;
 @EntityListeners({ GenericoListener.class })
 public class Produto extends EntidadeBaseInteger {
 	
-	@Column(name = "data_criacao", updatable = false)
+	@Column(name = "data_criacao", updatable = false, nullable = false)
 	private LocalDateTime dataCriacao;
 	
 	@Column(name = "data_ultima_atualizacao", insertable = false)
 	private LocalDateTime dataUltimaAtualizacao;
 
-	@Column(length = 100, nullable = false) // nome varchar(100) not null
+	@Column(length = 100, nullable = false)
 	private String nome;
 
 	@Column(columnDefinition = "varchar(275) not null default 'descrição'")
 	private String descricao;
 
-	@Column(precision = 10, scale = 2) // preco deciman(10,2)
 	private BigDecimal preco;
 	
 	@Lob
@@ -62,7 +61,7 @@ public class Produto extends EntidadeBaseInteger {
 	@ElementCollection // para que o JPA gerencie essa propriedade
 	@CollectionTable(name = "produto_tag", // ele cria uma outra tabela para essa propriedade
 			joinColumns = @JoinColumn(name = "produto_id"))
-	@Column(name = "tag")
+	@Column(name = "tag", length = 50, nullable = false)
 	private List<String> tags;
 	
 	@ElementCollection
