@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="algaworks-ecommerce (1)" project="algaworks-ecommerce" tests="52" started="52" failures="0" errors="1" ignored="0">
+  <testsuite name="com.algaworks.ecommerce.conhecendoentitymanager.EstadosECicloDeVidaTest" time="0.155">
+    <testcase name="analisarEstados" classname="com.algaworks.ecommerce.conhecendoentitymanager.EstadosECicloDeVidaTest" time="0.155"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.iniciandocomjpa.ConsultandoRegistrosTest" time="0.022">
+    <testcase name="atualizarReferencia" classname="com.algaworks.ecommerce.iniciandocomjpa.ConsultandoRegistrosTest" time="0.02"/>
+    <testcase name="buscarPorIdentificador" classname="com.algaworks.ecommerce.iniciandocomjpa.ConsultandoRegistrosTest" time="0.002"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.DetalhesColumnTest" time="0.062">
+    <testcase name="impedirAtualizacaoDaColunaCriacao" classname="com.algaworks.ecommerce.mapeamentoavancado.DetalhesColumnTest" time="0.041"/>
+    <testcase name="impedirInsercaoDaColunaAtualizacao" classname="com.algaworks.ecommerce.mapeamentoavancado.DetalhesColumnTest" time="0.021"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.14">
+    <testcase name="abrirFecharTransacao" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.003"/>
+    <testcase name="impedirOperacaoComBancoDeDados" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.01"/>
+    <testcase name="atualizarObjetoGerenciado" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.017"/>
+    <testcase name="inserirObjetoComMerge" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.014"/>
+    <testcase name="removerObjeto" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.03"/>
+    <testcase name="mostrarDiferencaPersistMerge" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.032"/>
+    <testcase name="inserirPrimeiroObjeto" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.014"/>
+    <testcase name="atualizarObjeto" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.018"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.relacionamentos.EagerELazyTest" time="0.023">
+    <testcase name="verificarComportamento" classname="com.algaworks.ecommerce.relacionamentos.EagerELazyTest" time="0.023"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.conhecendoentitymanager.CachePrimeiroNivelTest" time="0.006">
+    <testcase name="verificarCache" classname="com.algaworks.ecommerce.conhecendoentitymanager.CachePrimeiroNivelTest" time="0.006"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.MapsIdTest" time="0.062">
+    <testcase name="inserirPagamento" classname="com.algaworks.ecommerce.mapeamentoavancado.MapsIdTest" time="0.034"/>
+    <testcase name="inserirItemPedido" classname="com.algaworks.ecommerce.mapeamentoavancado.MapsIdTest" time="0.028"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.ElementCollectionTest" time="0.091">
+    <testcase name="aplicarTags" classname="com.algaworks.ecommerce.mapeamentoavancado.ElementCollectionTest" time="0.021"/>
+    <testcase name="aplicarContato" classname="com.algaworks.ecommerce.mapeamentoavancado.ElementCollectionTest" time="0.03"/>
+    <testcase name="aplicarAtributos" classname="com.algaworks.ecommerce.mapeamentoavancado.ElementCollectionTest" time="0.04"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.relacionamentos.AutoRelacionamentoTest" time="0.018">
+    <testcase name="removerEntidadeReferenciada" classname="com.algaworks.ecommerce.relacionamentos.AutoRelacionamentoTest" time="0.018"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.SalvandoArquivosTest" time="0.06">
+    <testcase name="salvarXmlNota" classname="com.algaworks.ecommerce.mapeamentoavancado.SalvandoArquivosTest" time="0.032"/>
+    <testcase name="salvarJpgFotoProduto" classname="com.algaworks.ecommerce.mapeamentoavancado.SalvandoArquivosTest" time="0.027"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.relacionamentos.RelacionamentoManyToManyTest" time="0.073">
+    <testcase name="verificarRelacionamento" classname="com.algaworks.ecommerce.relacionamentos.RelacionamentoManyToManyTest" time="0.073"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.iniciandocomjpa.PrimeiroCrudTest" time="0.139">
+    <testcase name="buscarPorIdentificador" classname="com.algaworks.ecommerce.iniciandocomjpa.PrimeiroCrudTest" time="0.013"/>
+    <testcase name="excluirObjeto" classname="com.algaworks.ecommerce.iniciandocomjpa.PrimeiroCrudTest" time="0.042"/>
+    <testcase name="alterarObjeto" classname="com.algaworks.ecommerce.iniciandocomjpa.PrimeiroCrudTest" time="0.042"/>
+    <testcase name="inserirObjeto" classname="com.algaworks.ecommerce.iniciandocomjpa.PrimeiroCrudTest" time="0.041"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.conhecendoentitymanager.FlushTest" time="0.02">
+    <testcase name="chamarFlush" classname="com.algaworks.ecommerce.conhecendoentitymanager.FlushTest" time="0.02"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.ChaveCompostaTest" time="0.044">
+    <testcase name="salvarItem" classname="com.algaworks.ecommerce.mapeamentoavancado.ChaveCompostaTest" time="0.039"/>
+    <testcase name="buscarItem" classname="com.algaworks.ecommerce.mapeamentoavancado.ChaveCompostaTest" time="0.005"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.conhecendoentitymanager.ContextoDePersistenciaTest" time="0.017">
+    <testcase name="usarContextoPersistencia" classname="com.algaworks.ecommerce.conhecendoentitymanager.ContextoDePersistenciaTest" time="0.017"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.ddl.DDLTest" time="0.0">
+    <testcase name="gerarDDL" classname="com.algaworks.ecommerce.ddl.DDLTest" time="0.0"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.SecondaryTableTest" time="0.032">
+    <testcase name="salvarCliente" classname="com.algaworks.ecommerce.mapeamentoavancado.SecondaryTableTest" time="0.033"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.relacionamentos.RelacionamentoOneToOneTest" time="0.037">
+    <testcase name="verificarRelacionamentoPedidoPagamentoCartao" classname="com.algaworks.ecommerce.relacionamentos.RelacionamentoOneToOneTest" time="0.02"/>
+    <testcase name="verificarRelacionamentoPedidoNotaFiscal" classname="com.algaworks.ecommerce.relacionamentos.RelacionamentoOneToOneTest" time="0.017"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentobasico.EstrategiaChavePrimariaTest" time="0.015">
+    <testcase name="testarEstrategiaChave" classname="com.algaworks.ecommerce.mapeamentobasico.EstrategiaChavePrimariaTest" time="0.015"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.conhecendoentitymanager.CallbacksTest" time="0.025">
+    <testcase name="acionarCallbacks" classname="com.algaworks.ecommerce.conhecendoentitymanager.CallbacksTest" time="0.025"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.conhecendoentitymanager.GerenciamentoTransacoesTest" time="0.006">
+    <testcase name="abrirFecharCancelarTransacao" classname="com.algaworks.ecommerce.conhecendoentitymanager.GerenciamentoTransacoesTest" time="0.006"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.relacionamentos.RelacionamentoManyToOneTest" time="0.037">
+    <testcase name="verificarRelacionamentoItemPedido" classname="com.algaworks.ecommerce.relacionamentos.RelacionamentoManyToOneTest" time="0.022"/>
+    <testcase name="verificarRelacionamentoPedido" classname="com.algaworks.ecommerce.relacionamentos.RelacionamentoManyToOneTest" time="0.015"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentobasico.MapeamentoObjetoEmbutidoTest" time="0.023">
+    <testcase name="analisarMapeamentoObjetoEmbutido" classname="com.algaworks.ecommerce.mapeamentobasico.MapeamentoObjetoEmbutidoTest" time="0.023"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.relacionamentos.RemovendoEntidadesReferenciadasTest" time="0.022">
+    <testcase name="removerEntidadeReferenciada" classname="com.algaworks.ecommerce.relacionamentos.RemovendoEntidadesReferenciadasTest" time="0.022"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.PropriedadesTransientesTest" time="0.003">
+    <testcase name="validarPrimeiroNome" classname="com.algaworks.ecommerce.mapeamentoavancado.PropriedadesTransientesTest" time="0.003"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.conhecendoentitymanager.ListenersTest" time="0.025">
+    <testcase name="carregarEntidades" classname="com.algaworks.ecommerce.conhecendoentitymanager.ListenersTest" time="0.009"/>
+    <testcase name="acionarCallbacks" classname="com.algaworks.ecommerce.conhecendoentitymanager.ListenersTest" time="0.016"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentobasico.MapeamentoEnumeracoesTest" time="0.008">
+    <testcase name="testarEnum" classname="com.algaworks.ecommerce.mapeamentobasico.MapeamentoEnumeracoesTest" time="0.008">
+      <error>javax.persistence.PersistenceException: org.hibernate.PersistentObjectException: detached entity passed to persist: com.algaworks.ecommerce.model.Cliente&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:154)&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:181)&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:188)&#13;
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:810)&#13;
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:788)&#13;
+	at com.algaworks.ecommerce.mapeamentobasico.MapeamentoEnumeracoesTest.testarEnum(MapeamentoEnumeracoesTest.java:22)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+Caused by: org.hibernate.PersistentObjectException: detached entity passed to persist: com.algaworks.ecommerce.model.Cliente&#13;
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:127)&#13;
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:62)&#13;
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:803)&#13;
+	... 29 more&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.relacionamentos.RelacionamentoOneToManyTest" time="0.14">
+    <testcase name="verificarRelacionamentoPedido" classname="com.algaworks.ecommerce.relacionamentos.RelacionamentoOneToManyTest" time="0.112"/>
+    <testcase name="verificarRelacionamentoCliente" classname="com.algaworks.ecommerce.relacionamentos.RelacionamentoOneToManyTest" time="0.027"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.HerancaTest" time="0.209">
+    <testcase name="salvarCliente" classname="com.algaworks.ecommerce.mapeamentoavancado.HerancaTest" time="0.012"/>
+    <testcase name="incluirPagamentoPedido" classname="com.algaworks.ecommerce.mapeamentoavancado.HerancaTest" time="0.017"/>
+    <testcase name="buscarPagamentos" classname="com.algaworks.ecommerce.mapeamentoavancado.HerancaTest" time="0.18"/>
+  </testsuite>
+</testrun>

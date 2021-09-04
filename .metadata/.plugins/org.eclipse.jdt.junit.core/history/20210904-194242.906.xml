@@ -1,0 +1,526 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="algaworks-ecommerce (1)" project="algaworks-ecommerce" tests="52" started="31" failures="2" errors="8" ignored="0">
+  <testsuite name="com.algaworks.ecommerce.conhecendoentitymanager.EstadosECicloDeVidaTest" time="0.177">
+    <testcase name="analisarEstados" classname="com.algaworks.ecommerce.conhecendoentitymanager.EstadosECicloDeVidaTest" time="0.177"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.iniciandocomjpa.ConsultandoRegistrosTest" time="0.028">
+    <testcase name="atualizarReferencia" classname="com.algaworks.ecommerce.iniciandocomjpa.ConsultandoRegistrosTest" time="0.023"/>
+    <testcase name="buscarPorIdentificador" classname="com.algaworks.ecommerce.iniciandocomjpa.ConsultandoRegistrosTest" time="0.004"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.DetalhesColumnTest" time="0.114">
+    <testcase name="impedirAtualizacaoDaColunaCriacao" classname="com.algaworks.ecommerce.mapeamentoavancado.DetalhesColumnTest" time="0.082"/>
+    <testcase name="impedirInsercaoDaColunaAtualizacao" classname="com.algaworks.ecommerce.mapeamentoavancado.DetalhesColumnTest" time="0.031"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.158">
+    <testcase name="abrirFecharTransacao" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.002"/>
+    <testcase name="impedirOperacaoComBancoDeDados" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.01"/>
+    <testcase name="atualizarObjetoGerenciado" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.017"/>
+    <testcase name="inserirObjetoComMerge" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.014"/>
+    <testcase name="removerObjeto" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.031"/>
+    <testcase name="mostrarDiferencaPersistMerge" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.045"/>
+    <testcase name="inserirPrimeiroObjeto" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.02"/>
+    <testcase name="atualizarObjeto" classname="com.algaworks.ecommerce.iniciandocomjpa.OperacoesComTransacaoTest" time="0.018"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.relacionamentos.EagerELazyTest" time="0.011">
+    <testcase name="verificarComportamento" classname="com.algaworks.ecommerce.relacionamentos.EagerELazyTest" time="0.011">
+      <error>java.lang.NullPointerException: Cannot invoke "com.algaworks.ecommerce.model.Pedido.getItensPedido()" because "pedido" is null&#13;
+	at com.algaworks.ecommerce.relacionamentos.EagerELazyTest.verificarComportamento(EagerELazyTest.java:14)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.conhecendoentitymanager.CachePrimeiroNivelTest" time="0.005">
+    <testcase name="verificarCache" classname="com.algaworks.ecommerce.conhecendoentitymanager.CachePrimeiroNivelTest" time="0.005"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.MapsIdTest" time="0.109">
+    <testcase name="inserirPagamento" classname="com.algaworks.ecommerce.mapeamentoavancado.MapsIdTest" time="0.085">
+      <error>javax.persistence.PersistenceException: org.hibernate.id.IdentifierGenerationException: attempted to assign id from null one-to-one property [com.algaworks.ecommerce.model.NotaFiscal.pedido]&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:154)&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:181)&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:188)&#13;
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:810)&#13;
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:788)&#13;
+	at com.algaworks.ecommerce.mapeamentoavancado.MapsIdTest.inserirPagamento(MapsIdTest.java:31)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+Caused by: org.hibernate.id.IdentifierGenerationException: attempted to assign id from null one-to-one property [com.algaworks.ecommerce.model.NotaFiscal.pedido]&#13;
+	at org.hibernate.id.ForeignGenerator.generate(ForeignGenerator.java:90)&#13;
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:119)&#13;
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:192)&#13;
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:135)&#13;
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:62)&#13;
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:803)&#13;
+	... 29 more&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="inserirItemPedido" classname="com.algaworks.ecommerce.mapeamentoavancado.MapsIdTest" time="0.023">
+      <error>javax.persistence.PersistenceException: org.hibernate.PropertyValueException: not-null property references a null or transient value : com.algaworks.ecommerce.model.Pedido.cliente&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:154)&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:181)&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:188)&#13;
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:810)&#13;
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:788)&#13;
+	at com.algaworks.ecommerce.mapeamentoavancado.MapsIdTest.inserirItemPedido(MapsIdTest.java:60)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+Caused by: org.hibernate.PropertyValueException: not-null property references a null or transient value : com.algaworks.ecommerce.model.Pedido.cliente&#13;
+	at org.hibernate.engine.internal.Nullability.checkNullability(Nullability.java:111)&#13;
+	at org.hibernate.engine.internal.Nullability.checkNullability(Nullability.java:55)&#13;
+	at org.hibernate.action.internal.AbstractEntityInsertAction.nullifyTransientReferencesIfNotAlready(AbstractEntityInsertAction.java:115)&#13;
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:69)&#13;
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:645)&#13;
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:282)&#13;
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:263)&#13;
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:317)&#13;
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:332)&#13;
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:289)&#13;
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:196)&#13;
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:127)&#13;
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:192)&#13;
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:135)&#13;
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:62)&#13;
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:803)&#13;
+	... 29 more&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.ElementCollectionTest" time="0.146">
+    <testcase name="aplicarTags" classname="com.algaworks.ecommerce.mapeamentoavancado.ElementCollectionTest" time="0.062"/>
+    <testcase name="aplicarContato" classname="com.algaworks.ecommerce.mapeamentoavancado.ElementCollectionTest" time="0.012">
+      <error>java.lang.NullPointerException: Cannot invoke "com.algaworks.ecommerce.model.Cliente.setContatos(java.util.Map)" because "cliente" is null&#13;
+	at com.algaworks.ecommerce.mapeamentoavancado.ElementCollectionTest.aplicarContato(ElementCollectionTest.java:51)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="aplicarAtributos" classname="com.algaworks.ecommerce.mapeamentoavancado.ElementCollectionTest" time="0.072"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.relacionamentos.AutoRelacionamentoTest" time="0.024">
+    <testcase name="removerEntidadeReferenciada" classname="com.algaworks.ecommerce.relacionamentos.AutoRelacionamentoTest" time="0.024"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.SalvandoArquivosTest" time="0.061">
+    <testcase name="salvarXmlNota" classname="com.algaworks.ecommerce.mapeamentoavancado.SalvandoArquivosTest" time="0.008">
+      <error>javax.persistence.PersistenceException: org.hibernate.id.IdentifierGenerationException: attempted to assign id from null one-to-one property [com.algaworks.ecommerce.model.NotaFiscal.pedido]&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:154)&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:181)&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:188)&#13;
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:810)&#13;
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:788)&#13;
+	at com.algaworks.ecommerce.mapeamentoavancado.SalvandoArquivosTest.salvarXmlNota(SalvandoArquivosTest.java:32)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+Caused by: org.hibernate.id.IdentifierGenerationException: attempted to assign id from null one-to-one property [com.algaworks.ecommerce.model.NotaFiscal.pedido]&#13;
+	at org.hibernate.id.ForeignGenerator.generate(ForeignGenerator.java:90)&#13;
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:119)&#13;
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:192)&#13;
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:135)&#13;
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:62)&#13;
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:803)&#13;
+	... 29 more&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="salvarJpgFotoProduto" classname="com.algaworks.ecommerce.mapeamentoavancado.SalvandoArquivosTest" time="0.053"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.relacionamentos.RelacionamentoManyToManyTest" time="0.028">
+    <testcase name="verificarRelacionamento" classname="com.algaworks.ecommerce.relacionamentos.RelacionamentoManyToManyTest" time="0.028"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.iniciandocomjpa.PrimeiroCrudTest" time="0.034">
+    <testcase name="buscarPorIdentificador" classname="com.algaworks.ecommerce.iniciandocomjpa.PrimeiroCrudTest" time="0.007">
+      <failure>java.lang.AssertionError&#13;
+	at org.junit.Assert.fail(Assert.java:86)&#13;
+	at org.junit.Assert.assertTrue(Assert.java:41)&#13;
+	at org.junit.Assert.assertNotNull(Assert.java:712)&#13;
+	at org.junit.Assert.assertNotNull(Assert.java:722)&#13;
+	at com.algaworks.ecommerce.iniciandocomjpa.PrimeiroCrudTest.buscarPorIdentificador(PrimeiroCrudTest.java:16)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+</failure>
+    </testcase>
+    <testcase name="excluirObjeto" classname="com.algaworks.ecommerce.iniciandocomjpa.PrimeiroCrudTest" time="0.004">
+      <error>java.lang.IllegalArgumentException: attempt to create delete event with null entity&#13;
+	at org.hibernate.event.spi.DeleteEvent.&lt;init&gt;(DeleteEvent.java:31)&#13;
+	at org.hibernate.internal.SessionImpl.delete(SessionImpl.java:950)&#13;
+	at org.hibernate.internal.SessionImpl.remove(SessionImpl.java:3504)&#13;
+	at com.algaworks.ecommerce.iniciandocomjpa.PrimeiroCrudTest.excluirObjeto(PrimeiroCrudTest.java:60)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="alterarObjeto" classname="com.algaworks.ecommerce.iniciandocomjpa.PrimeiroCrudTest" time="0.003">
+      <error>java.lang.NullPointerException: Cannot invoke "com.algaworks.ecommerce.model.Cliente.setNome(String)" because "clienteMerge" is null&#13;
+	at com.algaworks.ecommerce.iniciandocomjpa.PrimeiroCrudTest.alterarObjeto(PrimeiroCrudTest.java:43)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="inserirObjeto" classname="com.algaworks.ecommerce.iniciandocomjpa.PrimeiroCrudTest" time="0.019"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.conhecendoentitymanager.FlushTest" time="0.018">
+    <testcase name="chamarFlush" classname="com.algaworks.ecommerce.conhecendoentitymanager.FlushTest" time="0.018"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.ChaveCompostaTest" time="0.016">
+    <testcase name="salvarItem" classname="com.algaworks.ecommerce.mapeamentoavancado.ChaveCompostaTest" time="0.009">
+      <error>javax.persistence.PersistenceException: org.hibernate.PropertyValueException: not-null property references a null or transient value : com.algaworks.ecommerce.model.Pedido.cliente&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:154)&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:181)&#13;
+	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:188)&#13;
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:810)&#13;
+	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:788)&#13;
+	at com.algaworks.ecommerce.mapeamentoavancado.ChaveCompostaTest.salvarItem(ChaveCompostaTest.java:41)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+Caused by: org.hibernate.PropertyValueException: not-null property references a null or transient value : com.algaworks.ecommerce.model.Pedido.cliente&#13;
+	at org.hibernate.engine.internal.Nullability.checkNullability(Nullability.java:111)&#13;
+	at org.hibernate.engine.internal.Nullability.checkNullability(Nullability.java:55)&#13;
+	at org.hibernate.action.internal.AbstractEntityInsertAction.nullifyTransientReferencesIfNotAlready(AbstractEntityInsertAction.java:115)&#13;
+	at org.hibernate.action.internal.EntityIdentityInsertAction.execute(EntityIdentityInsertAction.java:69)&#13;
+	at org.hibernate.engine.spi.ActionQueue.execute(ActionQueue.java:645)&#13;
+	at org.hibernate.engine.spi.ActionQueue.addResolvedEntityInsertAction(ActionQueue.java:282)&#13;
+	at org.hibernate.engine.spi.ActionQueue.addInsertAction(ActionQueue.java:263)&#13;
+	at org.hibernate.engine.spi.ActionQueue.addAction(ActionQueue.java:317)&#13;
+	at org.hibernate.event.internal.AbstractSaveEventListener.addInsertAction(AbstractSaveEventListener.java:332)&#13;
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSaveOrReplicate(AbstractSaveEventListener.java:289)&#13;
+	at org.hibernate.event.internal.AbstractSaveEventListener.performSave(AbstractSaveEventListener.java:196)&#13;
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:127)&#13;
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.saveWithGeneratedOrRequestedId(DefaultSaveOrUpdateEventListener.java:191)&#13;
+	at org.hibernate.event.internal.DefaultSaveEventListener.saveWithGeneratedOrRequestedId(DefaultSaveEventListener.java:38)&#13;
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.entityIsTransient(DefaultSaveOrUpdateEventListener.java:176)&#13;
+	at org.hibernate.event.internal.DefaultSaveEventListener.performSaveOrUpdate(DefaultSaveEventListener.java:32)&#13;
+	at org.hibernate.event.internal.DefaultSaveOrUpdateEventListener.onSaveOrUpdate(DefaultSaveOrUpdateEventListener.java:73)&#13;
+	at org.hibernate.internal.SessionImpl.fireSave(SessionImpl.java:712)&#13;
+	at org.hibernate.internal.SessionImpl.save(SessionImpl.java:704)&#13;
+	at org.hibernate.id.ForeignGenerator.generate(ForeignGenerator.java:120)&#13;
+	at org.hibernate.mapping.Component$ValueGenerationPlan.execute(Component.java:497)&#13;
+	at org.hibernate.id.CompositeNestedGeneratedValueGenerator.generate(CompositeNestedGeneratedValueGenerator.java:97)&#13;
+	at org.hibernate.event.internal.AbstractSaveEventListener.saveWithGeneratedId(AbstractSaveEventListener.java:119)&#13;
+	at org.hibernate.event.internal.DefaultPersistEventListener.entityIsTransient(DefaultPersistEventListener.java:192)&#13;
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:135)&#13;
+	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:62)&#13;
+	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:803)&#13;
+	... 29 more&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="buscarItem" classname="com.algaworks.ecommerce.mapeamentoavancado.ChaveCompostaTest" time="0.007">
+      <failure>java.lang.AssertionError&#13;
+	at org.junit.Assert.fail(Assert.java:86)&#13;
+	at org.junit.Assert.assertTrue(Assert.java:41)&#13;
+	at org.junit.Assert.assertNotNull(Assert.java:712)&#13;
+	at org.junit.Assert.assertNotNull(Assert.java:722)&#13;
+	at com.algaworks.ecommerce.mapeamentoavancado.ChaveCompostaTest.buscarItem(ChaveCompostaTest.java:56)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:564)&#13;
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)&#13;
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)&#13;
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)&#13;
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)&#13;
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)&#13;
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)&#13;
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)&#13;
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)&#13;
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)&#13;
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)&#13;
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)&#13;
+	at org.junit.internal.runners.statements.RunAfters.evaluate(RunAfters.java:27)&#13;
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)&#13;
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:93)&#13;
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:40)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:529)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)&#13;
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)&#13;
+&#13;
+</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.conhecendoentitymanager.ContextoDePersistenciaTest" incomplete="true">
+    <testcase name="usarContextoPersistencia" classname="com.algaworks.ecommerce.conhecendoentitymanager.ContextoDePersistenciaTest" incomplete="true"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.ddl.DDLTest" incomplete="true">
+    <testcase name="gerarDDL" classname="com.algaworks.ecommerce.ddl.DDLTest" incomplete="true"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.SecondaryTableTest" incomplete="true">
+    <testcase name="salvarCliente" classname="com.algaworks.ecommerce.mapeamentoavancado.SecondaryTableTest" incomplete="true"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.relacionamentos.RelacionamentoOneToOneTest" incomplete="true">
+    <testcase name="verificarRelacionamentoPedidoPagamentoCartao" classname="com.algaworks.ecommerce.relacionamentos.RelacionamentoOneToOneTest" incomplete="true"/>
+    <testcase name="verificarRelacionamentoPedidoNotaFiscal" classname="com.algaworks.ecommerce.relacionamentos.RelacionamentoOneToOneTest" incomplete="true"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentobasico.EstrategiaChavePrimariaTest" incomplete="true">
+    <testcase name="testarEstrategiaChave" classname="com.algaworks.ecommerce.mapeamentobasico.EstrategiaChavePrimariaTest" incomplete="true"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.conhecendoentitymanager.CallbacksTest" incomplete="true">
+    <testcase name="acionarCallbacks" classname="com.algaworks.ecommerce.conhecendoentitymanager.CallbacksTest" incomplete="true"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.conhecendoentitymanager.GerenciamentoTransacoesTest" incomplete="true">
+    <testcase name="abrirFecharCancelarTransacao" classname="com.algaworks.ecommerce.conhecendoentitymanager.GerenciamentoTransacoesTest" incomplete="true"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.relacionamentos.RelacionamentoManyToOneTest" incomplete="true">
+    <testcase name="verificarRelacionamentoItemPedido" classname="com.algaworks.ecommerce.relacionamentos.RelacionamentoManyToOneTest" incomplete="true"/>
+    <testcase name="verificarRelacionamentoPedido" classname="com.algaworks.ecommerce.relacionamentos.RelacionamentoManyToOneTest" incomplete="true"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentobasico.MapeamentoObjetoEmbutidoTest" incomplete="true">
+    <testcase name="analisarMapeamentoObjetoEmbutido" classname="com.algaworks.ecommerce.mapeamentobasico.MapeamentoObjetoEmbutidoTest" incomplete="true"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.relacionamentos.RemovendoEntidadesReferenciadasTest" incomplete="true">
+    <testcase name="removerEntidadeReferenciada" classname="com.algaworks.ecommerce.relacionamentos.RemovendoEntidadesReferenciadasTest" incomplete="true"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.PropriedadesTransientesTest" incomplete="true">
+    <testcase name="validarPrimeiroNome" classname="com.algaworks.ecommerce.mapeamentoavancado.PropriedadesTransientesTest" incomplete="true"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.conhecendoentitymanager.ListenersTest" incomplete="true">
+    <testcase name="carregarEntidades" classname="com.algaworks.ecommerce.conhecendoentitymanager.ListenersTest" incomplete="true"/>
+    <testcase name="acionarCallbacks" classname="com.algaworks.ecommerce.conhecendoentitymanager.ListenersTest" incomplete="true"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentobasico.MapeamentoEnumeracoesTest" incomplete="true">
+    <testcase name="testarEnum" classname="com.algaworks.ecommerce.mapeamentobasico.MapeamentoEnumeracoesTest" incomplete="true"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.relacionamentos.RelacionamentoOneToManyTest" incomplete="true">
+    <testcase name="verificarRelacionamentoPedido" classname="com.algaworks.ecommerce.relacionamentos.RelacionamentoOneToManyTest" incomplete="true"/>
+    <testcase name="verificarRelacionamentoCliente" classname="com.algaworks.ecommerce.relacionamentos.RelacionamentoOneToManyTest" incomplete="true"/>
+  </testsuite>
+  <testsuite name="com.algaworks.ecommerce.mapeamentoavancado.HerancaTest" incomplete="true">
+    <testcase name="salvarCliente" classname="com.algaworks.ecommerce.mapeamentoavancado.HerancaTest" incomplete="true"/>
+    <testcase name="incluirPagamentoPedido" classname="com.algaworks.ecommerce.mapeamentoavancado.HerancaTest" incomplete="true"/>
+    <testcase name="buscarPagamentos" classname="com.algaworks.ecommerce.mapeamentoavancado.HerancaTest" incomplete="true"/>
+  </testsuite>
+</testrun>

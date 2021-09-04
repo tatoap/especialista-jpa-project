@@ -1,10 +1,8 @@
-javax.persistence.PersistenceException: org.hibernate.PersistentObjectException: detached entity passed to persist: com.algaworks.ecommerce.model.Pedido
+javax.persistence.PersistenceException: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
 	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:154)
-	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:181)
-	at org.hibernate.internal.ExceptionConverterImpl.convert(ExceptionConverterImpl.java:188)
-	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:810)
-	at org.hibernate.internal.SessionImpl.persist(SessionImpl.java:788)
-	at com.algaworks.ecommerce.mapeamentobasico.MapeamentoObjetoEmbutidoTest.analisarMapeamentoObjetoEmbutido(MapeamentoObjetoEmbutidoTest.java:38)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1538)
+	at org.hibernate.query.Query.getResultList(Query.java:165)
+	at com.algaworks.ecommerce.mapeamentoavancado.HerancaTest.buscarPagamentos(HerancaTest.java:39)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:64)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -32,9 +30,34 @@ javax.persistence.PersistenceException: org.hibernate.PersistentObjectException:
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:756)
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:452)
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:210)
-Caused by: org.hibernate.PersistentObjectException: detached entity passed to persist: com.algaworks.ecommerce.model.Pedido
-	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:127)
-	at org.hibernate.event.internal.DefaultPersistEventListener.onPersist(DefaultPersistEventListener.java:62)
-	at org.hibernate.internal.SessionImpl.firePersist(SessionImpl.java:803)
+Caused by: org.hibernate.exception.SQLGrammarException: could not extract ResultSet
+	at org.hibernate.exception.internal.SQLExceptionTypeDelegate.convert(SQLExceptionTypeDelegate.java:63)
+	at org.hibernate.exception.internal.StandardSQLExceptionConverter.convert(StandardSQLExceptionConverter.java:42)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:113)
+	at org.hibernate.engine.jdbc.spi.SqlExceptionHelper.convert(SqlExceptionHelper.java:99)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:69)
+	at org.hibernate.loader.Loader.getResultSet(Loader.java:2171)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:1934)
+	at org.hibernate.loader.Loader.executeQueryStatement(Loader.java:1896)
+	at org.hibernate.loader.Loader.doQuery(Loader.java:936)
+	at org.hibernate.loader.Loader.doQueryAndInitializeNonLazyCollections(Loader.java:339)
+	at org.hibernate.loader.Loader.doList(Loader.java:2693)
+	at org.hibernate.loader.Loader.doList(Loader.java:2676)
+	at org.hibernate.loader.Loader.listIgnoreQueryCache(Loader.java:2510)
+	at org.hibernate.loader.Loader.list(Loader.java:2505)
+	at org.hibernate.loader.hql.QueryLoader.list(QueryLoader.java:504)
+	at org.hibernate.hql.internal.ast.QueryTranslatorImpl.list(QueryTranslatorImpl.java:396)
+	at org.hibernate.engine.query.spi.HQLQueryPlan.performList(HQLQueryPlan.java:219)
+	at org.hibernate.internal.SessionImpl.list(SessionImpl.java:1537)
+	at org.hibernate.query.internal.AbstractProducedQuery.doList(AbstractProducedQuery.java:1561)
+	at org.hibernate.query.internal.AbstractProducedQuery.list(AbstractProducedQuery.java:1529)
 	... 29 more
+Caused by: java.sql.SQLSyntaxErrorException: Unknown column 'pagamento0_.numero_cartao' in 'field list'
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:120)
+	at com.mysql.cj.jdbc.exceptions.SQLError.createSQLException(SQLError.java:97)
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:122)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeInternal(ClientPreparedStatement.java:955)
+	at com.mysql.cj.jdbc.ClientPreparedStatement.executeQuery(ClientPreparedStatement.java:1005)
+	at org.hibernate.engine.jdbc.internal.ResultSetReturnImpl.extract(ResultSetReturnImpl.java:60)
+	... 44 more
 
