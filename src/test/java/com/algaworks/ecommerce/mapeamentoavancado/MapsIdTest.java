@@ -13,6 +13,8 @@ import com.algaworks.ecommerce.model.ItemPedidoId;
 import com.algaworks.ecommerce.model.NotaFiscal;
 import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.Produto;
+import com.algaworks.ecommerce.model.StatusPagamento;
+import com.algaworks.ecommerce.model.StatusPedido;
 
 public class MapsIdTest extends EntityManagerTest {
 	
@@ -23,7 +25,7 @@ public class MapsIdTest extends EntityManagerTest {
 		NotaFiscal notaFiscal = new NotaFiscal();
 		notaFiscal.setPedido(pedido);
 		notaFiscal.setDataEmissao(new Date());
-		//notaFiscal.setXml("<xml/>");
+		notaFiscal.setXml("<xml/>".getBytes());
 		
 		entityManager.getTransaction().begin();
 		entityManager.persist(notaFiscal);
@@ -44,6 +46,7 @@ public class MapsIdTest extends EntityManagerTest {
 		Pedido pedido = new Pedido();
 		pedido.setCliente(cliente);
 		pedido.setDataCriacao(LocalDateTime.now());
+		pedido.setStatus(StatusPedido.AGUARDANDO);
 		pedido.setTotal(produto.getPreco());
 		
 		ItemPedido itemPedido = new ItemPedido();

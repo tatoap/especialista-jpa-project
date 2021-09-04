@@ -1,5 +1,8 @@
 package com.algaworks.ecommerce.conhecendoentitymanager;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -24,8 +27,9 @@ public class ListenersTest extends EntityManagerTest {
 		Pedido pedido = new Pedido();
 		
 		pedido.setCliente(cliente);
-		
+		pedido.setDataCriacao(LocalDateTime.now());
 		pedido.setStatus(StatusPedido.AGUARDANDO);
+		pedido.setTotal(BigDecimal.TEN);
 		
 		entityManager.getTransaction().begin();
 		

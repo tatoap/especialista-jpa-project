@@ -11,6 +11,7 @@ public class EstadosECicloDeVidaTest extends EntityManagerTest {
 	public void analisarEstados() {
 		// transient
 		Categoria categoriaNovo = new Categoria();
+		categoriaNovo.setNome("Eletrônicos");
 		
 		// managed
 		Categoria categoriaGerenciadaMerge = entityManager.merge(categoriaNovo);

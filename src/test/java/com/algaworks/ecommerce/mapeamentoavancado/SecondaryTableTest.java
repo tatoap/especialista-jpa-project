@@ -16,6 +16,7 @@ public class SecondaryTableTest extends EntityManagerTest {
 		Cliente cliente = new Cliente();
 		cliente.setNome("Henrique Ramos");
 		cliente.setSexo(SexoCliente.MASCULINO);
+		cliente.setCpf("555");
 		cliente.setDataNascimento(LocalDate.of(2021, 5, 18));
 		
 		entityManager.getTransaction().begin();

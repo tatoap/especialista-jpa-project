@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import com.algaworks.ecommerce.EntityManagerTest;
 import com.algaworks.ecommerce.model.Cliente;
+import com.algaworks.ecommerce.model.SexoCliente;
 
 public class PrimeiroCrudTest extends EntityManagerTest {
 	
@@ -21,6 +22,8 @@ public class PrimeiroCrudTest extends EntityManagerTest {
 		
 		//cliente.setId(3); foi comentado porque estamos usando a estratégia IDENTITY
 		cliente.setNome("Henrique Ramos");
+		cliente.setCpf("888");
+		cliente.setSexo(SexoCliente.MASCULINO);
 		
 		entityManager.getTransaction().begin();
 		entityManager.persist(cliente);
