@@ -31,8 +31,9 @@ import lombok.Setter;
 @Table(name = "cliente", 
 		uniqueConstraints = { @UniqueConstraint(name = "unq_cpf", columnNames = { "cpf" }) }, // anota uma coluna como unique na tabela
 		indexes = { @Index(name = "idx_nome", columnList = "nome") }) // para organizar uma coluna da tabela para buscar de uma forma mais agil
-//@EqualsAndHashCode(of = {"id"})
-@SecondaryTable(name = "cliente_detalhe", pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id")) // permite trazer para uma entidade valores que estão em duas tabelas
+@SecondaryTable(name = "cliente_detalhe", 
+	pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"),
+	foreignKey = @ForeignKey(name = "fk_cliente_detalhe_cliente")) // permite trazer para uma entidade valores que estão em duas tabelas
 public class Cliente extends EntidadeBaseInteger {
 	
 	@Column(length = 100, nullable = false)
