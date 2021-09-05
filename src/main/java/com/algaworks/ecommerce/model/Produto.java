@@ -64,14 +64,14 @@ public class Produto extends EntidadeBaseInteger {
 	@ElementCollection // para que o JPA gerencie essa propriedade
 	@CollectionTable(name = "produto_tag", // ele cria uma outra tabela para essa propriedade
 			joinColumns = @JoinColumn(name = "produto_id", nullable = false,
-					foreignKey = @ForeignKey(name = "fk_produto_tag")))
+					foreignKey = @ForeignKey(name = "fk_produto_tag_produto")))
 	@Column(name = "tag", length = 50, nullable = false)
 	private List<String> tags;
 	
 	@ElementCollection
 	@CollectionTable(name = "produto_atributo",
 			joinColumns = @JoinColumn(name = "produto_id", nullable = false,
-					foreignKey = @ForeignKey(name = "fk_produto_atributo")))
+					foreignKey = @ForeignKey(name = "fk_produto_atributo_produto")))
 	private List<Atributo> atributos;
 
 }

@@ -27,13 +27,64 @@ import lombok.Setter;
 
 @Getter
 @Setter
+@SecondaryTable(name = "cliente_detalhe",
+        pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"),
+        foreignKey = @ForeignKey(name = "fk_cliente_detalhe_cliente")) // permite trazer para uma entidade valores que estão em duas tabelas
 @Entity
+@Table(name = "cliente",
+        uniqueConstraints = { @UniqueConstraint(name = "unq_cpf", columnNames = { "cpf" }) }, // anota uma coluna como unique na tabela
+        indexes = { @Index(name = "idx_nome", columnList = "nome") }) // para organizar uma coluna da tabela para buscar de uma forma mais agil
+public class Cliente extends EntidadeBaseInteger {
+
+    @Column(length = 100, nullable = false)
+    private String nome;
+    
+    @Transient // essa marcação faz com que o JPA ignore essa propriedade
+	private String primeiroNome;
+
+    @Column(length = 14, nullable = false)
+    private String cpf;
+
+    @ElementCollection
+    @CollectionTable(name = "cliente_contato",
+            joinColumns = @JoinColumn(name = "cliente_id", nullable = false,
+                    foreignKey = @ForeignKey(name = "fk_cliente_contato_cliente")))
+    @MapKeyColumn(name = "tipo")
+    @Column(name = "descricao")
+    private Map<String, String> contatos;
+
+    @Column(table = "cliente_detalhe", length = 30, nullable = false)
+    @Enumerated(EnumType.STRING)
+    private SexoCliente sexo;
+
+    @Column(name = "data_nascimento", table = "cliente_detalhe")
+    private LocalDate dataNascimento;
+
+    // esse mapeamento não é necessário. já que na tabela de pedidos esta mapeado
+ 	// como manytoone para cliente
+    @OneToMany(mappedBy = "cliente")
+    private List<Pedido> pedidos;
+
+    @PostLoad
+    public void configurarPrimeiroNome(){
+        if (nome != null && !nome.isBlank()) {
+            int index = nome.indexOf(" ");
+            if (index > -1) {
+                primeiroNome = nome.substring(0, index);
+            }
+        }
+    }
+}
+
+/*@Getter
+@Setter
+@Entity
+@SecondaryTable(name = "cliente_detalhe", 
+		pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"),
+		foreignKey = @ForeignKey(name = "fk_cliente_detalhe_cliente")) // permite trazer para uma entidade valores que estão em duas tabelas
 @Table(name = "cliente", 
 		uniqueConstraints = { @UniqueConstraint(name = "unq_cpf", columnNames = { "cpf" }) }, // anota uma coluna como unique na tabela
 		indexes = { @Index(name = "idx_nome", columnList = "nome") }) // para organizar uma coluna da tabela para buscar de uma forma mais agil
-@SecondaryTable(name = "cliente_detalhe", 
-	pkJoinColumns = @PrimaryKeyJoinColumn(name = "cliente_id"),
-	foreignKey = @ForeignKey(name = "fk_cliente_detalhe_cliente")) // permite trazer para uma entidade valores que estão em duas tabelas
 public class Cliente extends EntidadeBaseInteger {
 	
 	@Column(length = 100, nullable = false)
@@ -45,7 +96,7 @@ public class Cliente extends EntidadeBaseInteger {
 	@ElementCollection
 	@CollectionTable(name = "cliente_contato",
 			joinColumns = @JoinColumn(name = "cliente_id"),
-			foreignKey = @ForeignKey(name = "fk_cliente_contato"))
+			foreignKey = @ForeignKey(name = "fk_cliente_contato_cliente"))
 	@MapKeyColumn(name = "tipo")
 	@Column(name = "descricao")
 	private Map<String, String> contatos;
@@ -57,7 +108,7 @@ public class Cliente extends EntidadeBaseInteger {
 	@Enumerated(EnumType.STRING)
 	private SexoCliente sexo;
 	
-	@Column(name = "data_nascimento", table = "cliente_detalhe")
+	@Column(name = "data_nascimento", table = "cliente_detalhe_cliente")
 	private LocalDate dataNascimento;
 
 	// esse mapeamento não é necessário. já que na tabela de pedidos esta mapeado
@@ -74,4 +125,4 @@ public class Cliente extends EntidadeBaseInteger {
 			}
 		}
 	}
-}
+}*/
