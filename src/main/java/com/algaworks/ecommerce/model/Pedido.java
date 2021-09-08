@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -79,8 +80,11 @@ public class Pedido extends EntidadeBaseInteger {
 	//@PreUpdate
 	public void calcularTotal() {
 		if (itensPedido != null) {
-			total = itensPedido.stream().map(ItemPedido::getPrecoProduto)
+			total = itensPedido.stream().map(
+						i -> new BigDecimal(i.getQuantidade()).multiply(i.getPrecoProduto()))
 					.reduce(BigDecimal.ZERO, BigDecimal::add);
+		} else {
+			total = BigDecimal.ZERO;
 		}
 	}
 	
