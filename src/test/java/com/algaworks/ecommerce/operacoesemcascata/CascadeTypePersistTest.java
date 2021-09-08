@@ -9,6 +9,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import com.algaworks.ecommerce.EntityManagerTest;
+import com.algaworks.ecommerce.model.Categoria;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.ItemPedido;
 import com.algaworks.ecommerce.model.ItemPedidoId;
@@ -18,6 +19,27 @@ import com.algaworks.ecommerce.model.SexoCliente;
 import com.algaworks.ecommerce.model.StatusPedido;
 
 public class CascadeTypePersistTest extends EntityManagerTest {
+	
+	//@Test
+	public void persistirProdutoComCategoria() {
+		Produto produto = new Produto();
+		produto.setNome("Samsung Galaxy S21");
+		produto.setDescricao("O melhor smartphone do mercado");
+		produto.setPreco(BigDecimal.TEN);
+		produto.setDataCriacao(LocalDateTime.now());
+		
+		Categoria categoria = new Categoria();
+		categoria.setNome("Smartphone");
+		
+		produto.setCategorias(Arrays.asList(categoria)); // CascadeType.PERSIST
+		
+		entityManager.getTransaction().begin();
+		entityManager.persist(produto);
+		entityManager.getTransaction().commit();
+		
+		Categoria categoriaVerificacao = entityManager.find(Categoria.class, categoria.getId());
+		Assert.assertNotNull(categoriaVerificacao);
+	}
 
 	//@Test
 	public void persistirPedidoComItens() {
@@ -47,7 +69,7 @@ public class CascadeTypePersistTest extends EntityManagerTest {
 		
 		Pedido pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
 		Assert.assertNotNull(pedidoVerificacao);
-		Assert.assertFalse(pedido.getItensPedido().isEmpty());
+		Assert.assertFalse(pedidoVerificacao.getItensPedido().isEmpty());
 	}
 	
 	@Test
