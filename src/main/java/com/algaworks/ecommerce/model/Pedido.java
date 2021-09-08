@@ -44,7 +44,7 @@ public class Pedido extends EntidadeBaseInteger {
 	private Cliente cliente;
 	
 	//@OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER) // por padrão, o comportamento para busca de lista é Lazy
-	@OneToMany(mappedBy = "pedido", cascade = CascadeType.REFRESH)
+	@OneToMany(mappedBy = "pedido")
 	private List<ItemPedido> itensPedido;
 	
 	@Column(name = "data_criacao", updatable = false, nullable = false)
