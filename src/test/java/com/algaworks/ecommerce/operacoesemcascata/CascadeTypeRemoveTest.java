@@ -1,5 +1,7 @@
 package com.algaworks.ecommerce.operacoesemcascata;
 
+import javax.persistence.CascadeType;
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -38,6 +40,18 @@ public class CascadeTypeRemoveTest extends EntityManagerTest {
 		
 		Pedido pedidoVerificacao = entityManager.find(Pedido.class, itemPedido.getPedido().getId());
 		Assert.assertNull(pedidoVerificacao);
+	}
+	
+	//@Test
+	public void removerItensOrfaos() {
+		Pedido pedido = entityManager.find(Pedido.class, 1);
+		
+		entityManager.getTransaction().begin();
+		pedido.getItensPedido().clear(); // cascade = CascadeType.PERSIST, orphanRemoval = true
+		entityManager.getTransaction().commit();
+		
+		Pedido pedidoVerificacao = entityManager.find(Pedido.class, pedido.getId());
+		Assert.assertTrue(pedidoVerificacao.getItensPedido().isEmpty());
 	}
 	
 	@Test
