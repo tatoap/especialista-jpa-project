@@ -17,6 +17,28 @@ import com.algaworks.ecommerce.model.Produto;
 public class ExpressoesCondicionaisTest extends EntityManagerTest {
 	
 	@Test
+	public void usarExpressaoDiferente() {
+		String jpql = "select p from Produto p where p.preco <> 100";
+		
+		TypedQuery<Produto> typedQuery = entityManager.createQuery(jpql, Produto.class);
+		List<Produto> lista = typedQuery.getResultList();
+		
+		Assert.assertFalse(lista.isEmpty());
+	}
+	
+	@Test
+	public void usarBetween() {
+		String jpql = "select p from Pedido p where p.dataCriacao between :dataInicial and :dataFinal";
+		
+		TypedQuery<Pedido> typedQuery = entityManager.createQuery(jpql, Pedido.class);
+		typedQuery.setParameter("dataInicial", LocalDateTime.now().minusDays(2));
+		typedQuery.setParameter("dataFinal", LocalDateTime.now());
+		List<Pedido> lista = typedQuery.getResultList();
+		
+		Assert.assertFalse(lista.isEmpty());
+	}
+	
+	@Test
 	public void usarMaiorEMenorComDatas() {
 		String jpql = "select p from Pedido p where p.dataCriacao >= :dataInicial "
 				+ "and p.dataCriacao <= :dataFinal";
