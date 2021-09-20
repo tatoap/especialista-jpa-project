@@ -12,6 +12,18 @@ import com.algaworks.ecommerce.EntityManagerTest;
 public class FuncoesTest extends EntityManagerTest {
 	
 	@Test
+	public void aplicarFuncoesColecao() {
+		String jpql = "select size(p.itensPedido) from Pedido p where size(p.itensPedido) > 1";
+		
+		TypedQuery<Integer> typedQuery = entityManager.createQuery(jpql, Integer.class);
+		List<Integer> lista = typedQuery.getResultList();
+		
+		Assert.assertFalse(lista.isEmpty());
+		
+		lista.forEach(size -> System.out.println(size));
+	}
+	
+	@Test
 	public void aplicarFuncoesNumero() {
 		// abs - retorna valor absoluto
 		// mod - retorna resto da divisão
