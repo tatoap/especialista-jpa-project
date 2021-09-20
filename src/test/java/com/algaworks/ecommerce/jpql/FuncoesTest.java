@@ -12,6 +12,20 @@ import com.algaworks.ecommerce.EntityManagerTest;
 public class FuncoesTest extends EntityManagerTest {
 	
 	@Test
+	public void aplicarFuncoesAgregacao() {
+		// avg, count, min, max, sum
+		
+		String jpql = "select sum(p.total) from Pedido p";
+		
+		TypedQuery<Number> typedQuery = entityManager.createQuery(jpql, Number.class);
+		List<Number> lista = typedQuery.getResultList();
+		
+		Assert.assertFalse(lista.isEmpty());
+		
+		lista.forEach(obj -> System.out.println(obj));
+	}
+	
+	@Test
 	public void aplicarFuncoesNativas() {
 		// dayname - retorna o nome da data passada
 		
