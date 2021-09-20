@@ -12,6 +12,23 @@ import com.algaworks.ecommerce.EntityManagerTest;
 public class FuncoesTest extends EntityManagerTest {
 	
 	@Test
+	public void aplicarFuncoesNumero() {
+		// abs - retorna valor absoluto
+		// mod - retorna resto da divisão
+		// sqrt - retorna raiz quadrada
+		
+		String jpql = "select abs(p.total), mod(p.id, 2), sqrt(p.total) from Pedido p "
+				+ "where abs(p.total) > 1000";
+		
+		TypedQuery<Object[]> typedQuery = entityManager.createQuery(jpql, Object[].class);
+		List<Object[]> lista = typedQuery.getResultList();
+		
+		Assert.assertFalse(lista.isEmpty());
+		
+		lista.forEach(arr -> System.out.println(arr[0] + " | " + arr[1] + " | " + arr[2]));
+	}
+	
+	@Test
 	public void aplicarFuncoesData() {
 		// TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
 		
