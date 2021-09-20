@@ -12,6 +12,23 @@ import com.algaworks.ecommerce.EntityManagerTest;
 public class GroupByTest extends EntityManagerTest {
 	
 	@Test
+	public void agruparEFiltrarResultado() {
+		
+		String jpql = "select c.nome, sum(ip.precoProduto) from ItemPedido ip "
+				+ "join ip.pedido p join p.cliente c join ip.pedido p "
+				+ "where year(p.dataCriacao) = year(current_date) and month(p.dataCriacao) >= (month(current_date) - 3) "
+				+ "group by c.id";
+		
+		TypedQuery<Object[]> typedQuery = entityManager.createQuery(jpql, Object[].class);
+		List<Object[]> lista = typedQuery.getResultList();
+		
+		Assert.assertFalse(lista.isEmpty());
+		
+        lista.forEach(arr -> System.out.println(arr[0] + ", " + arr[1]));
+		
+	}
+	
+	@Test
 	public void agruparResultado() {
 		//Quantidade de produtos por categoria.
 		//String jpql = "select c.nome, count(p.id) from Categoria c join c.produtos p group by c.id";
