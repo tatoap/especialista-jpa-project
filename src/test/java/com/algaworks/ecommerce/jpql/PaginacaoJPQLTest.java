@@ -20,7 +20,7 @@ public class PaginacaoJPQLTest extends EntityManagerTest {
 		
 		//FIRST_RESULT = MAX_RESULT * (pagina - 1)
 		typedQuery.setFirstResult(6);
-		typedQuery.setMaxResults(2);
+		typedQuery.setMaxResults(2); // para limitar o resultado da busca, sem o setFirstResult.
 		
 		List<Categoria> lista = typedQuery.getResultList();
 		
