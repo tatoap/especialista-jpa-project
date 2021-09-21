@@ -2,6 +2,7 @@ package com.algaworks.ecommerce.jpql;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -15,6 +16,52 @@ import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.Produto;
 
 public class ExpressoesCondicionaisTest extends EntityManagerTest {
+	
+	@Test
+	public void usarExpressaoIN() {
+		Cliente cliente1 = entityManager.find(Cliente.class, 1);
+		Cliente cliente2 = new Cliente();
+		cliente2.setId(2);
+		
+		//List<Integer> parametros = Arrays.asList(1, 3, 4);
+		List<Cliente> clientes = Arrays.asList(cliente1, cliente2);
+		
+		//String jpql = "select p from Pedido p where p.id in (:lista)";
+		String jpql = "select p from Pedido p where p.cliente in (:lista)";
+		
+		TypedQuery<Pedido> typedQuery = entityManager.createQuery(jpql, Pedido.class);
+		//typedQuery.setParameter("lista", parametros);
+		typedQuery.setParameter("lista", clientes);
+		List<Pedido> lista = typedQuery.getResultList();
+		
+		Assert.assertFalse(lista.isEmpty());
+	}
+	
+	@Test
+	public void usarExpressaoCase() {
+		/*String jpql = "select p.id, "
+				+ "case p.status "
+				+ "when 'PAGO' then 'Está pago' "
+				+ "when 'CANCELADO' then 'Foi cancelado' "
+				+ "else 'Está aguardando' "
+				+ "end "
+				+ "from Pedido p";*/
+		
+		String jpql = "select p.id, "
+				+ "case type(p.pagamento) "
+				+ "when PagamentoBoleto then 'Pago com boleto' "
+				+ "when PagamentoCartao then 'Pago com cartão' "
+				+ "else 'Não consta pagamento' "
+				+ "end "
+				+ "from Pedido p";
+		
+		TypedQuery<Object[]> typedQuery = entityManager.createQuery(jpql, Object[].class);
+		List<Object[]> lista = typedQuery.getResultList();
+		
+		Assert.assertFalse(lista.isEmpty());
+		
+		lista.forEach(p -> System.out.println(p[0] + ", " + p[1]));
+	}
 	
 	@Test
 	public void usarExpressaoDiferente() {
@@ -76,8 +123,8 @@ public class ExpressoesCondicionaisTest extends EntityManagerTest {
 	
 	@Test
 	public void usarIsEmpty() {
-		String jpql = "select p from Produto p where p.categorias is empty";
-		//String jpql = "select p from Produto p where p.categorias is not empty";
+		//String jpql = "select p from Produto p where p.categorias is empty";
+		String jpql = "select p from Produto p where p.categorias is not empty";
 		
 		TypedQuery<Object[]> typedQuery = entityManager.createQuery(jpql, Object[].class);
 		List<Object[]> lista = typedQuery.getResultList();
