@@ -15,6 +15,26 @@ import com.algaworks.ecommerce.model.Produto;
 public class SubqueriesTest extends EntityManagerTest {
 	
 	@Test
+	public void pesquisarComAny() {
+		// Podemos usar o ANY ou o SOME
+		
+		// Todos produtos que já foram vendidos por um preço diferente do atual
+		//String jpql = "select p from Produto p where "
+		//		+ "p.preco <> ANY (select precoProduto from ItemPedido where produto = p)";
+		
+		// Todos produtos que já foram vendidos pelo menos uma vez com o preço atual
+		String jpql = "select p from Produto p where "
+				+ "p.preco = ANY (select precoProduto from ItemPedido where produto = p)";
+		
+		TypedQuery<Produto> typedQuery = entityManager.createQuery(jpql, Produto.class);
+		
+		List<Produto> lista = typedQuery.getResultList();
+		Assert.assertFalse(lista.isEmpty());
+		
+		lista.forEach(obj -> System.out.println("ID " + obj.getId()));
+	}
+	
+	@Test
 	public void pesquisarComAll() {
 		// Todos os produtos não foram vendidos mais depois que encareceram
 		//String jpql = "select p from Produto p where "
@@ -54,7 +74,7 @@ public class SubqueriesTest extends EntityManagerTest {
         lista.forEach(obj -> System.out.println("ID: " + obj.getId() + ", " + obj.getNome()));
 	}
 	
-	//@Test
+	@Test
 	public void pesquisaComIN() {
 		/*String jpql = "select p from Pedido p where p.id in "
 				+ "(select p2.id from ItemPedido i2 "
@@ -73,7 +93,7 @@ public class SubqueriesTest extends EntityManagerTest {
         lista.forEach(obj -> System.out.println("ID: " + obj.getId()));
 	}
 
-	//@Test
+	@Test
 	public void pesquisarSubqueries() {
 		
 		String jpql = "select c from Cliente c where "
