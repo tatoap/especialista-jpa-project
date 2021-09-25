@@ -15,23 +15,55 @@ import com.algaworks.ecommerce.model.Produto;
 public class SubqueriesTest extends EntityManagerTest {
 	
 	@Test
+	public void pesquisarComAll() {
+		// Todos os produtos não foram vendidos mais depois que encareceram
+		//String jpql = "select p from Produto p where "
+		//		+ "p.preco > ALL (select precoProduto from ItemPedido where produto = p)";
+		
+		// Todos os produtos que sempre foram vendidos pelo preço atual
+		String jpql = "select p from Produto p where "
+				+ "p.preco = ALL (select precoProduto from ItemPedido where produto = p)";
+		
+		TypedQuery<Produto> typedQuery = entityManager.createQuery(jpql, Produto.class);
+		
+		List<Produto> lista = typedQuery.getResultList();
+		Assert.assertFalse(lista.isEmpty());
+		
+		lista.forEach(obj -> System.out.println("ID " + obj.getId()));
+	}
+	
+	@Test
 	public void pesquisarComExists() {
+		//String jpql = "select p from Produto p where exists "
+		//		+ "(select 1 from ItemPedido ip2 join ip2.produto p2 where p2 = p)";
+		
+		//Retorna produtos que não foram vendidos com o preço atual
+		//String jpql = "select p from Produto p where exists "
+		//		+ "(select 1 from ItemPedido ip join ip.produto p2 where p2 = p "
+		//		+ "and ip.precoProduto <> p.preco)";
+		
+		//Retorna produtos que não foram vendidos com o preço atual v2
 		String jpql = "select p from Produto p where exists "
-				+ "(select 1 from ItemPedido ip2 join ip2.produto p2 where p2 = p)";
+				+ "(select 1 from ItemPedido where produto = p and precoProduto <> p.preco)";
 		
 		TypedQuery<Produto> typedQuery = entityManager.createQuery(jpql, Produto.class);
 
         List<Produto> lista = typedQuery.getResultList();
         Assert.assertFalse(lista.isEmpty());
 
-        lista.forEach(obj -> System.out.println("ID: " + obj.getId()));
+        lista.forEach(obj -> System.out.println("ID: " + obj.getId() + ", " + obj.getNome()));
 	}
 	
-	@Test
+	//@Test
 	public void pesquisaComIN() {
+		/*String jpql = "select p from Pedido p where p.id in "
+				+ "(select p2.id from ItemPedido i2 "
+				+ "join i2.pedido p2 join i2.produto pro2 where pro2.preco > 100)";*/
+		
 		String jpql = "select p from Pedido p where p.id in "
 				+ "(select p2.id from ItemPedido i2 "
-				+ "join i2.pedido p2 join i2.produto pro2 where pro2.preco > 100)";
+				+ "join i2.pedido p2 join i2.produto pro2 "
+				+ "join pro2.categorias c2 where c2.id = 2)";
 		
 		TypedQuery<Pedido> typedQuery = entityManager.createQuery(jpql, Pedido.class);
 
@@ -41,11 +73,15 @@ public class SubqueriesTest extends EntityManagerTest {
         lista.forEach(obj -> System.out.println("ID: " + obj.getId()));
 	}
 
-	@Test
+	//@Test
 	public void pesquisarSubqueries() {
-		//Bons clientes. Versão 2.
+		
 		String jpql = "select c from Cliente c where "
-				+ "500 > (select sum(p.total) from Pedido p where p.cliente = c)";
+				+ "(select count(p.id) from Pedido p where p.cliente = c) >= 2";
+		
+		//Bons clientes. Versão 2.
+		//String jpql = "select c from Cliente c where "
+		//		+ "500 > (select sum(p.total) from Pedido p where p.cliente = c)";
 		
 		//Bons clientes. Versão 1.
 		//String jpql = "select c from Cliente c where " +
