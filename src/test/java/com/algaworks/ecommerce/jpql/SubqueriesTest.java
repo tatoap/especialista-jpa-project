@@ -14,7 +14,7 @@ import com.algaworks.ecommerce.model.Produto;
 
 public class SubqueriesTest extends EntityManagerTest {
 	
-	@Test
+	//@Test
 	public void pesquisarComAny() {
 		// Podemos usar o ANY ou o SOME
 		
@@ -36,13 +36,18 @@ public class SubqueriesTest extends EntityManagerTest {
 	
 	@Test
 	public void pesquisarComAll() {
+		// Todos os produtos que sempre foram vendidos com o mesmo preço
+		String jpql = "select distinct p from ItemPedido ip join ip.produto p where "
+				+ "ip.precoProduto = ALL "
+				+ "(select precoProduto from ItemPedido where produto = p and id <> ip.id)";
+		
 		// Todos os produtos não foram vendidos mais depois que encareceram
 		//String jpql = "select p from Produto p where "
 		//		+ "p.preco > ALL (select precoProduto from ItemPedido where produto = p)";
 		
 		// Todos os produtos que sempre foram vendidos pelo preço atual
-		String jpql = "select p from Produto p where "
-				+ "p.preco = ALL (select precoProduto from ItemPedido where produto = p)";
+		//String jpql = "select p from Produto p where "
+		//		+ "p.preco = ALL (select precoProduto from ItemPedido where produto = p)";
 		
 		TypedQuery<Produto> typedQuery = entityManager.createQuery(jpql, Produto.class);
 		
@@ -52,7 +57,7 @@ public class SubqueriesTest extends EntityManagerTest {
 		lista.forEach(obj -> System.out.println("ID " + obj.getId()));
 	}
 	
-	@Test
+	//@Test
 	public void pesquisarComExists() {
 		//String jpql = "select p from Produto p where exists "
 		//		+ "(select 1 from ItemPedido ip2 join ip2.produto p2 where p2 = p)";
@@ -74,7 +79,7 @@ public class SubqueriesTest extends EntityManagerTest {
         lista.forEach(obj -> System.out.println("ID: " + obj.getId() + ", " + obj.getNome()));
 	}
 	
-	@Test
+	//@Test
 	public void pesquisaComIN() {
 		/*String jpql = "select p from Pedido p where p.id in "
 				+ "(select p2.id from ItemPedido i2 "
@@ -93,7 +98,7 @@ public class SubqueriesTest extends EntityManagerTest {
         lista.forEach(obj -> System.out.println("ID: " + obj.getId()));
 	}
 
-	@Test
+	//@Test
 	public void pesquisarSubqueries() {
 		
 		String jpql = "select c from Cliente c where "
