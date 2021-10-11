@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.criteria;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -16,7 +17,33 @@ import com.algaworks.ecommerce.model.Cliente_;
 import com.algaworks.ecommerce.model.Produto;
 import com.algaworks.ecommerce.model.Produto_;
 
-public class ExpressoesCondicionaisTest extends EntityManagerTest {
+public class ExpressoesCondicionaisCriteriaTest extends EntityManagerTest {
+	
+	@Test
+	public void usarMaiorMenor() {
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Produto> criteriaQuery = criteriaBuilder.createQuery(Produto.class);
+		Root<Produto> root = criteriaQuery.from(Produto.class);
+		
+		criteriaQuery.select(root);
+		
+		//criteriaQuery.where(criteriaBuilder.greaterThanOrEqualTo(root.get(Produto_.preco), new BigDecimal(1401)));
+		//criteriaQuery.where(criteriaBuilder.lessThanOrEqualTo(root.get(Produto_.preco), new BigDecimal(1401)));
+		
+		criteriaQuery.where(
+				criteriaBuilder.greaterThanOrEqualTo(
+						root.get(Produto_.preco), new BigDecimal(300)),
+				criteriaBuilder.lessThanOrEqualTo(
+						root.get(Produto_.preco), new BigDecimal(2000)));
+		
+		TypedQuery<Produto> typedQuery = entityManager.createQuery(criteriaQuery);
+		List<Produto> lista = typedQuery.getResultList();
+		
+		Assert.assertFalse(lista.isEmpty());
+		
+		lista.stream()
+			.forEach(p -> System.out.println("ID: " + p.getId() + ", Nome: " + p.getNome() + ", Valor: " + p.getPreco()));
+	}
 	
 	@Test
 	public void usarIsEmpty() {
@@ -53,7 +80,7 @@ public class ExpressoesCondicionaisTest extends EntityManagerTest {
 		Assert.assertFalse(lista.isEmpty());
 	}
 
-	//@Test
+	@Test
 	public void usarExpressaoCondicionalLike() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Cliente> criteriaQuery = criteriaBuilder.createQuery(Cliente.class);
