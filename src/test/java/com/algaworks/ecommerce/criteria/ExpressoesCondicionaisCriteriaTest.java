@@ -23,6 +23,28 @@ import com.algaworks.ecommerce.model.Produto_;
 public class ExpressoesCondicionaisCriteriaTest extends EntityManagerTest {
 	
 	@Test
+	public void usarBetween() {
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Pedido> criteriaQuery = criteriaBuilder.createQuery(Pedido.class);
+		Root<Pedido> root = criteriaQuery.from(Pedido.class);
+		
+		criteriaQuery.select(root);
+		
+		criteriaQuery.where(criteriaBuilder.between(
+				root.get(Pedido_.dataCriacao),
+				LocalDateTime.now().minusDays(2).withSecond(0).withMinute(0).withHour(0),
+				LocalDateTime.now()));
+		
+		TypedQuery<Pedido> typedQuery = entityManager.createQuery(criteriaQuery);
+		List<Pedido> lista = typedQuery.getResultList();
+		Assert.assertFalse(lista.isEmpty());
+		
+		lista.stream()
+			.forEach(p -> 
+				System.out.println("ID: " + p.getId() + ", Cliente: " + p.getCliente().getNome() + ", Data pedido: " + p.getDataCriacao()));
+	}
+	
+	@Test
 	public void usarMaiorMenorComDatas() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Pedido> criteriaQuery = criteriaBuilder.createQuery(Pedido.class);
@@ -39,10 +61,11 @@ public class ExpressoesCondicionaisCriteriaTest extends EntityManagerTest {
 		Assert.assertFalse(lista.isEmpty());
 		
 		lista.stream()
-			.forEach(p -> System.out.println("ID: " + p.getId() + ", Cliente: " + p.getCliente() + ", Data pedido: " + p.getDataCriacao()));
+			.forEach(p -> 
+				System.out.println("ID: " + p.getId() + ", Cliente: " + p.getCliente().getNome() + ", Data pedido: " + p.getDataCriacao()));
 	}
 	
-	//@Test
+	@Test
 	public void usarMaiorMenor() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Produto> criteriaQuery = criteriaBuilder.createQuery(Produto.class);
@@ -68,7 +91,7 @@ public class ExpressoesCondicionaisCriteriaTest extends EntityManagerTest {
 			.forEach(p -> System.out.println("ID: " + p.getId() + ", Nome: " + p.getNome() + ", Valor: " + p.getPreco()));
 	}
 	
-	//@Test
+	@Test
 	public void usarIsEmpty() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Produto> criteriaQuery = criteriaBuilder.createQuery(Produto.class);
@@ -85,7 +108,7 @@ public class ExpressoesCondicionaisCriteriaTest extends EntityManagerTest {
 		Assert.assertFalse(lista.isEmpty());
 	}
 	
-	//@Test
+	@Test
 	public void usarIsNull() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Produto> criteriaQuery = criteriaBuilder.createQuery(Produto.class);
@@ -103,7 +126,7 @@ public class ExpressoesCondicionaisCriteriaTest extends EntityManagerTest {
 		Assert.assertFalse(lista.isEmpty());
 	}
 
-	//@Test
+	@Test
 	public void usarExpressaoCondicionalLike() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Cliente> criteriaQuery = criteriaBuilder.createQuery(Cliente.class);
