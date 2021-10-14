@@ -24,6 +24,31 @@ import com.algaworks.ecommerce.model.StatusPedido;
 public class FuncoesCriteriaTest extends EntityManagerTest {
 	
 	@Test
+	public void aplicaFuncaoLista() {
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
+		Root<Pedido> root = criteriaQuery.from(Pedido.class);
+		
+		criteriaQuery.multiselect(
+				root.get(Pedido_.id),
+				criteriaBuilder.size(root.get(Pedido_.itensPedido))
+		);
+		
+		criteriaQuery.where(criteriaBuilder.greaterThan(
+				criteriaBuilder.size(root.get(Pedido_.itensPedido)), 1));
+		
+		TypedQuery<Object[]> typedQuery = entityManager.createQuery(criteriaQuery);
+		List<Object[]> lista = typedQuery.getResultList();
+		
+		Assert.assertFalse(lista.isEmpty());
+		
+		lista.forEach(arr -> System.out.println(
+				arr[0]
+						+ ", size: " + arr[1]
+		));
+	}
+	
+	@Test
 	public void aplicarFuncaoNumero() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
@@ -124,8 +149,7 @@ public class FuncoesCriteriaTest extends EntityManagerTest {
 						+ ", lower: " + arr[5]
 						+ ", upper: " + arr[6]
 						+ ", trim: |" + arr[7] + "|"
-		));
-		
+		));	
 	}
 	
 }
