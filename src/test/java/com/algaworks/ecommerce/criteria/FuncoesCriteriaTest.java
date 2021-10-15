@@ -51,7 +51,7 @@ public class FuncoesCriteriaTest extends EntityManagerTest {
 		));
 	}
 	
-	//@Test
+	@Test
 	public void aplicarFuncaoNativa() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
@@ -74,7 +74,7 @@ public class FuncoesCriteriaTest extends EntityManagerTest {
 				arr[0] + ", dayname: " + arr[1]));
 	}
 	
-	//@Test
+	@Test
 	public void aplicarFuncaoLista() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
@@ -99,7 +99,7 @@ public class FuncoesCriteriaTest extends EntityManagerTest {
 		));
 	}
 	
-	//@Test
+	@Test
 	public void aplicarFuncaoNumero() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
@@ -128,7 +128,7 @@ public class FuncoesCriteriaTest extends EntityManagerTest {
 		));
 	}
 	
-	//@Test
+	@Test
 	public void aplicarFuncaoData() {
 		// current_date, current_time, current_timestamp
 		
@@ -166,7 +166,7 @@ public class FuncoesCriteriaTest extends EntityManagerTest {
 		));
 	}
 
-	//@Test
+	@Test
 	public void aplicarFuncoesString() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
