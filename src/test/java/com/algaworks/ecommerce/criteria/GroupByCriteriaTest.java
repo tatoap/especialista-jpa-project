@@ -51,7 +51,7 @@ public class GroupByCriteriaTest extends EntityManagerTest {
 		lista.forEach(arr -> System.out.println("Nome: " + arr[0] + ", Sum: " + arr[1]));
 	}
 
-	//@Test
+	@Test
 	public void agruparResultado02() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
@@ -73,7 +73,7 @@ public class GroupByCriteriaTest extends EntityManagerTest {
 		lista.forEach(arr -> System.out.println("Nome: " + arr[0] + ", Sum: " + arr[1]));
 	}
 	
-	//@Test
+	@Test
 	public void agruparResultado01() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);

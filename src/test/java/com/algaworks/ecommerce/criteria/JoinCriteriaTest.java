@@ -41,7 +41,7 @@ public class JoinCriteriaTest extends EntityManagerTest {
 		Assert.assertFalse(lista.isEmpty());
 	}
 	
-	//@Test
+	@Test
 	public void usarJoinFetch() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Pedido> criteriaQuery = criteriaBuilder.createQuery(Pedido.class);
@@ -62,7 +62,7 @@ public class JoinCriteriaTest extends EntityManagerTest {
 		Assert.assertNotNull(pedido);
 	}
 	
-	//@Test
+	@Test
 	public void fazerLeftOuterJoin() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Pedido> criteriaQuery = criteriaBuilder.createQuery(Pedido.class);
@@ -77,7 +77,7 @@ public class JoinCriteriaTest extends EntityManagerTest {
 		Assert.assertTrue(lista.size() == 5);
 	}
 	
-	//@Test
+	@Test
 	public void fazerJoinComOn() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Pedido> criteriaQuery = criteriaBuilder.createQuery(Pedido.class);
@@ -93,7 +93,7 @@ public class JoinCriteriaTest extends EntityManagerTest {
 		Assert.assertTrue(lista.size() == 2);
 	}
 	
-	//@Test
+	@Test
 	public void fazerJoin() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Pedido> criteriaQuery = criteriaBuilder.createQuery(Pedido.class);
