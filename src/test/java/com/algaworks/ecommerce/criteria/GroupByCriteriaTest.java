@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
 
@@ -26,6 +27,29 @@ import com.algaworks.ecommerce.model.Produto_;
 public class GroupByCriteriaTest extends EntityManagerTest {
 	
 	@Test
+	public void agruparResultadoComFuncoes() {
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
+		Root<Pedido> root = criteriaQuery.from(Pedido.class);
+		
+		Expression<Integer> anoCriacaoPedido = criteriaBuilder.function("year", Integer.class, root.get(Pedido_.dataCriacao));
+		Expression<Integer> mesCriacaoPedido = criteriaBuilder.function("month", Integer.class, root.get(Pedido_.dataCriacao));
+		Expression<String> nomeMesCriacaoPedido = criteriaBuilder.function("monthname", String.class, root.get(Pedido_.dataCriacao));
+		
+		Expression<String> anoMesConcat = criteriaBuilder.concat(
+				criteriaBuilder.concat(anoCriacaoPedido.as(String.class), "/"), nomeMesCriacaoPedido);
+		
+		criteriaQuery.multiselect(anoMesConcat, criteriaBuilder.sum(root.get(Pedido_.total)));
+		
+		criteriaQuery.groupBy(anoCriacaoPedido, mesCriacaoPedido);
+		
+		TypedQuery<Object[]> typedQuery = entityManager.createQuery(criteriaQuery);
+		List<Object[]> lista = typedQuery.getResultList();
+		
+		lista.forEach(arr -> System.out.println("Ano/Mês: " + arr[0] + ", Sum: " + arr[1]));
+	}
+	
+	//@Test
 	public void agruparResultado03() {
 		//Total de vendas por cliente
 		//String jpql = "select c.nome, sum(ip.precoProduto) from ItemPedido ip " +
@@ -51,7 +75,7 @@ public class GroupByCriteriaTest extends EntityManagerTest {
 		lista.forEach(arr -> System.out.println("Nome: " + arr[0] + ", Sum: " + arr[1]));
 	}
 
-	@Test
+	//@Test
 	public void agruparResultado02() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
@@ -73,7 +97,7 @@ public class GroupByCriteriaTest extends EntityManagerTest {
 		lista.forEach(arr -> System.out.println("Nome: " + arr[0] + ", Sum: " + arr[1]));
 	}
 	
-	@Test
+	//@Test
 	public void agruparResultado01() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
