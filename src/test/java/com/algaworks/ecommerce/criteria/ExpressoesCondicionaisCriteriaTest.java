@@ -19,10 +19,39 @@ import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.Pedido_;
 import com.algaworks.ecommerce.model.Produto;
 import com.algaworks.ecommerce.model.Produto_;
+import com.algaworks.ecommerce.model.StatusPedido;
 
 public class ExpressoesCondicionaisCriteriaTest extends EntityManagerTest {
 	
 	@Test
+	public void usarExpressaoCase() {
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
+		Root<Pedido> root = criteriaQuery.from(Pedido.class);
+		
+		//criteriaQuery.multiselect(
+		//		root.get(Pedido_.id),
+		//		criteriaBuilder.selectCase(root.get(Pedido_.STATUS))
+		//		.when(StatusPedido.PAGO.toString(), "Foi pago.")
+		//		.when(StatusPedido.AGUARDANDO.toString(), "Esta aguardando.")
+		//		.otherwise("Esta cancelado."));
+		
+		criteriaQuery.multiselect(
+				root.get(Pedido_.id),
+				criteriaBuilder.selectCase(root.get(Pedido_.pagamento).type().as(String.class))
+				.when("boleto", "Foi pago com boleto.")
+				.when("cartao", "Foi pago com cartão.")
+				.otherwise("Pagamento não identificado."));
+		
+		TypedQuery<Object[]> typedQuery = entityManager.createQuery(criteriaQuery);
+		List<Object[]> lista = typedQuery.getResultList();
+		
+		Assert.assertFalse(lista.isEmpty());
+		
+		lista.forEach(arr -> System.out.println(arr[0] + ", " + arr[1]));
+	}
+	
+	//@Test
 	public void usarExpressaoDiferente() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Pedido> criteriaQuery = criteriaBuilder.createQuery(Pedido.class);
@@ -41,7 +70,7 @@ public class ExpressoesCondicionaisCriteriaTest extends EntityManagerTest {
 			System.out.println("ID: " + p.getId() + ", Cliente: " + p.getCliente().getNome() + ", Total: " + p.getTotal()));
 	}
 	
-	@Test
+	//@Test
 	public void usarBetween() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Pedido> criteriaQuery = criteriaBuilder.createQuery(Pedido.class);
@@ -63,7 +92,7 @@ public class ExpressoesCondicionaisCriteriaTest extends EntityManagerTest {
 				System.out.println("ID: " + p.getId() + ", Cliente: " + p.getCliente().getNome() + ", Data pedido: " + p.getDataCriacao()));
 	}
 	
-	@Test
+	//@Test
 	public void usarMaiorMenorComDatas() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Pedido> criteriaQuery = criteriaBuilder.createQuery(Pedido.class);
@@ -84,7 +113,7 @@ public class ExpressoesCondicionaisCriteriaTest extends EntityManagerTest {
 				System.out.println("ID: " + p.getId() + ", Cliente: " + p.getCliente().getNome() + ", Data pedido: " + p.getDataCriacao()));
 	}
 	
-	@Test
+	//@Test
 	public void usarMaiorMenor() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Produto> criteriaQuery = criteriaBuilder.createQuery(Produto.class);
@@ -110,7 +139,7 @@ public class ExpressoesCondicionaisCriteriaTest extends EntityManagerTest {
 			.forEach(p -> System.out.println("ID: " + p.getId() + ", Nome: " + p.getNome() + ", Valor: " + p.getPreco()));
 	}
 	
-	@Test
+	//@Test
 	public void usarIsEmpty() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Produto> criteriaQuery = criteriaBuilder.createQuery(Produto.class);
@@ -127,7 +156,7 @@ public class ExpressoesCondicionaisCriteriaTest extends EntityManagerTest {
 		Assert.assertFalse(lista.isEmpty());
 	}
 	
-	@Test
+	//@Test
 	public void usarIsNull() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Produto> criteriaQuery = criteriaBuilder.createQuery(Produto.class);
@@ -145,7 +174,7 @@ public class ExpressoesCondicionaisCriteriaTest extends EntityManagerTest {
 		Assert.assertFalse(lista.isEmpty());
 	}
 
-	@Test
+	//@Test
 	public void usarExpressaoCondicionalLike() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Cliente> criteriaQuery = criteriaBuilder.createQuery(Cliente.class);
