@@ -30,7 +30,7 @@ public class BasicoCriteriaTest extends EntityManagerTest {
 		root.join(Pedido_.itensPedido);
 		
 		criteriaQuery.select(root);
-		criteriaQuery.distinct(true); // não retorna itens repetidos
+		criteriaQuery.distinct(true); // não retorna itens duplicados
 		
 		TypedQuery<Pedido> typedQuery = entityManager.createQuery(criteriaQuery);
 		List<Pedido> lista = typedQuery.getResultList();
