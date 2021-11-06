@@ -17,11 +17,30 @@ import com.algaworks.ecommerce.dto.ProdutoDTO;
 import com.algaworks.ecommerce.model.Cliente;
 import com.algaworks.ecommerce.model.Cliente_;
 import com.algaworks.ecommerce.model.Pedido;
+import com.algaworks.ecommerce.model.Pedido_;
 import com.algaworks.ecommerce.model.Produto;
 
 public class BasicoCriteriaTest extends EntityManagerTest {
 	
 	@Test
+	public void usarDistinct() {
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaQuery<Pedido> criteriaQuery = criteriaBuilder.createQuery(Pedido.class);
+		Root<Pedido> root = criteriaQuery.from(Pedido.class);
+		root.join(Pedido_.itensPedido);
+		
+		criteriaQuery.select(root);
+		criteriaQuery.distinct(true); // não retorna itens repetidos
+		
+		TypedQuery<Pedido> typedQuery = entityManager.createQuery(criteriaQuery);
+		List<Pedido> lista = typedQuery.getResultList();
+		
+		Assert.assertFalse(lista.isEmpty());
+		
+		lista.forEach(p -> System.out.println("ID: " + p.getId()));
+	}
+	
+	//@Test
 	public void ordenarResultados() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Cliente> criteriaQuery = criteriaBuilder.createQuery(Cliente.class);
@@ -40,7 +59,7 @@ public class BasicoCriteriaTest extends EntityManagerTest {
 			.forEach(c -> System.out.println("ID: " + c.getId() + ", Nome: " + c.getNome()));
 	}
 	
-	@Test
+	//@Test
 	public void projetarOResultadoDTO() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<ProdutoDTO> criteriaQuery = criteriaBuilder.createQuery(ProdutoDTO.class);
@@ -56,7 +75,7 @@ public class BasicoCriteriaTest extends EntityManagerTest {
 		lista.forEach(dto -> System.out.println("ID " + dto.getId() + ", Nome: " + dto.getNome()));
 	}
 	
-	@Test
+	//@Test
 	public void projetarOResultadoTuple() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Tuple> criteriaQuery = criteriaBuilder.createTupleQuery();
@@ -72,7 +91,7 @@ public class BasicoCriteriaTest extends EntityManagerTest {
 		lista.forEach(t -> System.out.println("ID: " + t.get("id") + ", Nome: " + t.get("nome")));
 	}
 	
-	@Test
+	//@Test
 	public void projetarOResultado() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
@@ -88,7 +107,7 @@ public class BasicoCriteriaTest extends EntityManagerTest {
 		lista.forEach(arr -> System.out.println("ID " + arr[0] + ", Nome:" + arr[1]));
 	}
 	
-	@Test
+	//@Test
 	public void retornarTodosOsProdutos() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Produto> criteriaQuery = criteriaBuilder.createQuery(Produto.class);
@@ -102,7 +121,7 @@ public class BasicoCriteriaTest extends EntityManagerTest {
 		Assert.assertFalse(lista.isEmpty());
 	}
 	
-	@Test
+	//@Test
 	public void selecionarUmAtributoParaRetorno() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		
@@ -125,7 +144,7 @@ public class BasicoCriteriaTest extends EntityManagerTest {
 		Assert.assertEquals(new BigDecimal("2398.00"), total);
 	}
 	
-	@Test
+	//@Test
 	public void buscarPorIdentificador() {
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Pedido> criteriaQuery = criteriaBuilder.createQuery(Pedido.class);
