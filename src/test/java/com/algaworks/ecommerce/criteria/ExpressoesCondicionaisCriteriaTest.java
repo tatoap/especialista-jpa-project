@@ -20,7 +20,6 @@ import com.algaworks.ecommerce.model.Pedido;
 import com.algaworks.ecommerce.model.Pedido_;
 import com.algaworks.ecommerce.model.Produto;
 import com.algaworks.ecommerce.model.Produto_;
-import com.algaworks.ecommerce.model.StatusPedido;
 
 public class ExpressoesCondicionaisCriteriaTest extends EntityManagerTest {
 	
