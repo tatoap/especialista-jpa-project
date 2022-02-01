@@ -5,6 +5,7 @@ insert into produto (id, nome, preco, data_criacao, descricao) values (5, 'Micro
 
 insert into cliente (id, nome, cpf) values (1, 'Renato Ramos', '123');
 insert into cliente (id, nome, cpf) values (2, 'Patricia Avelar', '456');
+insert into cliente (id, nome, cpf) values (3, 'Henrique Ramos', '789');
 
 insert into cliente_detalhe (cliente_id, sexo, data_nascimento) values (1, 'MASCULINO', date_sub(sysdate(), interval 27 year));
 insert into cliente_detalhe (cliente_id, sexo, data_nascimento) values (2, 'FEMININO', date_sub(sysdate(), interval 30 year));
@@ -15,6 +16,7 @@ insert into pedido (id, cliente_id, data_criacao, total, status) values (3, 1, d
 insert into pedido (id, cliente_id, data_criacao, total, status) values (4, 2, date_sub(sysdate(), interval 2 day), 499.0, 'PAGO');
 insert into pedido (id, cliente_id, data_criacao, total, status) values (5, 1, date_sub(sysdate(), interval 2 day), 799.0, 'PAGO');
 insert into pedido (id, cliente_id, data_criacao, total, status) values (6, 2, sysdate(), 799.0, 'AGUARDANDO');
+insert into pedido (id, cliente_id, data_criacao, total, status) values (7, 3, sysdate(), 50.0, 'AGUARDANDO');
 
 insert into item_pedido (pedido_id, produto_id, preco_produto, quantidade) values (1, 1, 499, 2);
 insert into item_pedido (pedido_id, produto_id, preco_produto, quantidade) values (1, 3, 1400, 1);
