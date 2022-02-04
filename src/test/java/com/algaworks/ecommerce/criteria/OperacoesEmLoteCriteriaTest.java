@@ -1,16 +1,15 @@
 package com.algaworks.ecommerce.criteria;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaDelete;
 import javax.persistence.criteria.CriteriaUpdate;
 import javax.persistence.criteria.Join;
 import javax.persistence.criteria.Root;
 import javax.persistence.criteria.Subquery;
 
-import org.junit.Assert;
 import org.junit.Test;
 
 import com.algaworks.ecommerce.EntityManagerTest;
@@ -20,8 +19,26 @@ import com.algaworks.ecommerce.model.Produto;
 import com.algaworks.ecommerce.model.Produto_;
 
 public class OperacoesEmLoteCriteriaTest extends EntityManagerTest {
-
+	
 	@Test
+	public void removerEmLoteExercicio() {
+		// String jpql = "delete from Produto p where p.id between 5 and 12";
+		
+		entityManager.getTransaction().begin();
+		
+		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+		CriteriaDelete<Produto> criteriaDelete = criteriaBuilder.createCriteriaDelete(Produto.class);
+		Root<Produto> root = criteriaDelete.from(Produto.class);
+		
+		criteriaDelete.where(criteriaBuilder.between(root.get(Produto_.id), 6, 17));
+		
+		Query query = entityManager.createQuery(criteriaDelete);
+		query.executeUpdate();
+		
+		entityManager.getTransaction().commit();
+	}
+
+	//@Test
 	public void atualizarEmLote() {
 		entityManager.getTransaction().begin();
 		

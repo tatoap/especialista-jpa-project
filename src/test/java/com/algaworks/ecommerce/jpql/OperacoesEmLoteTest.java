@@ -18,7 +18,7 @@ public class OperacoesEmLoteTest extends EntityManagerTest {
 	
 	private static final int LIMITE_INSERCOES = 4;
 	
-	@Test
+	//@Test
 	public void removerEmLote() {
 		entityManager.getTransaction().begin();
 		
@@ -44,7 +44,7 @@ public class OperacoesEmLoteTest extends EntityManagerTest {
 		entityManager.getTransaction().commit();
 	}
 	
-	//@Test
+	@Test
 	public void inserirEmLote() {
 		InputStream in = OperacoesEmLoteTest.class.getClassLoader()
 				.getResourceAsStream("produtos/importar.txt");
