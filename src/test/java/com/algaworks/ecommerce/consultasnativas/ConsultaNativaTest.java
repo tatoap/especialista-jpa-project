@@ -13,6 +13,18 @@ import com.algaworks.ecommerce.model.Produto;
 public class ConsultaNativaTest extends EntityManagerTest {
 	
 	@Test
+	public void usarFieldResult() {
+		String sql = "select * from ecm_produto";
+		
+		Query query = entityManager.createNativeQuery(sql, "ecm_produto.Produto");
+		
+		List<Produto> lista = query.getResultList();
+		
+		lista.stream().forEach(obj -> System.out.println(
+				String.format("Produto => ID: %s, Nome: %s", obj.getId(), obj.getNome())));
+	}
+	
+	//@Test
 	public void usarSqlResultSetMapping02() {
 		String sql = "select ip.*, p.* from item_pedido ip join produto p on p.id = ip.produto_id";
 		
