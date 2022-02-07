@@ -2,8 +2,11 @@ package com.algaworks.ecommerce.consultasnativas;
 
 import java.util.List;
 
+import javax.persistence.ParameterMode;
 import javax.persistence.Query;
+import javax.persistence.StoredProcedureQuery;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.algaworks.ecommerce.EntityManagerTest;
