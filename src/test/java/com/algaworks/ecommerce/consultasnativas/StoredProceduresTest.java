@@ -1,5 +1,6 @@
 package com.algaworks.ecommerce.consultasnativas;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.ParameterMode;
@@ -14,6 +15,26 @@ import com.algaworks.ecommerce.model.Cliente;
 public class StoredProceduresTest extends EntityManagerTest {
 	
 	@Test
+	public void atualizarPrecoProdutoExercicio() {
+		StoredProcedureQuery storedProcedureQuery = entityManager
+				.createStoredProcedureQuery("ajustar_preco_produto");
+		
+		storedProcedureQuery.registerStoredProcedureParameter("produto_id", Integer.class, ParameterMode.IN);
+		
+		storedProcedureQuery.registerStoredProcedureParameter("percentual_ajuste", BigDecimal.class, ParameterMode.IN);
+		
+		storedProcedureQuery.registerStoredProcedureParameter("preco_ajustado", BigDecimal.class, ParameterMode.OUT);
+		
+		storedProcedureQuery.setParameter("produto_id", 1);
+		
+		storedProcedureQuery.setParameter("percentual_ajuste", new BigDecimal("0.1"));
+		
+		BigDecimal precoAjustado = (BigDecimal) storedProcedureQuery.getOutputParameterValue("preco_ajustado");
+		
+		Assert.assertEquals(new BigDecimal("878.9"), precoAjustado);
+	}
+	
+	//@Test
 	public void receberListaDaProcedure() {
 		StoredProcedureQuery storedProcedureQuery = entityManager
 				.createStoredProcedureQuery("compraram_acima_media", Cliente.class);
