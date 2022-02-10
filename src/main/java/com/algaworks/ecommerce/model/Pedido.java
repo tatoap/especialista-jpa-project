@@ -23,6 +23,9 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Positive;
 
 import com.algaworks.ecommerce.listener.GenericoListener;
 import com.algaworks.ecommerce.listener.GerarNotaFiscalListener;
@@ -46,21 +49,28 @@ public class Pedido extends EntidadeBaseInteger {
 	@OneToMany(mappedBy = "pedido")
 	private List<ItemPedido> itensPedido;
 	
+	@PastOrPresent
+	@NotNull
 	@Column(name = "data_criacao", updatable = false, nullable = false)
     private LocalDateTime dataCriacao;
 
+	@PastOrPresent
     @Column(name = "data_ultima_atualizacao", insertable = false)
     private LocalDateTime dataUltimaAtualizacao;
 
+	@PastOrPresent
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
     
     @OneToOne(mappedBy = "pedido")
 	private NotaFiscal notaFiscal;
 	
+    @NotNull
+    @Positive
     @Column(nullable = false)
 	private BigDecimal total;
 	
+    @NotNull
     @Column(length = 11, nullable = false)
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;

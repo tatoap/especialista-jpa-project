@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -22,6 +23,7 @@ import lombok.Setter;
 		uniqueConstraints = { @UniqueConstraint(name = "unq_nome", columnNames = { "nome" }) })
 public class Categoria extends EntidadeBaseInteger {
 	
+	@NotBlank
 	@Column(length = 100, nullable = false)
 	private String nome;
 	

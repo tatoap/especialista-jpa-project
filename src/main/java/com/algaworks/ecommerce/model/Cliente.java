@@ -24,6 +24,12 @@ import javax.persistence.StoredProcedureParameter;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+
+import org.hibernate.validator.constraints.br.CPF;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -45,15 +51,19 @@ import lombok.Setter;
         indexes = { @Index(name = "idx_nome", columnList = "nome") }) // para organizar uma coluna da tabela para buscar de uma forma mais agil
 public class Cliente extends EntidadeBaseInteger {
 
-    @Column(length = 100, nullable = false)
+    @NotBlank
+	@Column(length = 100, nullable = false)
     private String nome;
     
     @Transient // essa marcação faz com que o JPA ignore essa propriedade
 	private String primeiroNome;
 
+    @CPF
+    @NotBlank
     @Column(length = 14, nullable = false)
     private String cpf;
 
+    @NotEmpty
     @ElementCollection
     @CollectionTable(name = "cliente_contato",
             joinColumns = @JoinColumn(name = "cliente_id", nullable = false,
@@ -62,10 +72,12 @@ public class Cliente extends EntidadeBaseInteger {
     @Column(name = "descricao")
     private Map<String, String> contatos;
 
+    @NotNull
     @Column(table = "cliente_detalhe", length = 30, nullable = false)
     @Enumerated(EnumType.STRING)
     private SexoCliente sexo;
 
+    @Past
     @Column(name = "data_nascimento", table = "cliente_detalhe")
     private LocalDate dataNascimento;
 

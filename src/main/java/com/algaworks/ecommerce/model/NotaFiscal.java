@@ -11,6 +11,9 @@ import javax.persistence.Lob;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -28,6 +31,7 @@ public class NotaFiscal {
 	@Column(name = "pedido_id")
 	private Integer id;
 	
+	@NotNull
 	@MapsId
 	@OneToOne(optional = false)
 	@JoinColumn(name = "pedido_id", nullable = false,
@@ -37,10 +41,13 @@ public class NotaFiscal {
 	//			inverseJoinColumns = @JoinColumn(name = "pedido_id", unique = true))
 	private Pedido pedido;
 	
+	@NotEmpty
 	@Lob
 	@Column(nullable = false)
 	private byte[] xml;
 	
+	@PastOrPresent
+	@NotNull
 	@Column(name = "data_emissao", nullable = false)
 	private Date dataEmissao;
 

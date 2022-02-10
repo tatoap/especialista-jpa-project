@@ -28,6 +28,10 @@ import javax.persistence.SqlResultSetMapping;
 import javax.persistence.SqlResultSetMappings;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 
 import com.algaworks.ecommerce.dto.ProdutoDTO;
 import com.algaworks.ecommerce.listener.GenericoListener;
@@ -83,12 +87,16 @@ import lombok.Setter;
 @EntityListeners({ GenericoListener.class })
 public class Produto extends EntidadeBaseInteger {
 	
+	@PastOrPresent
+	@NotNull
 	@Column(name = "data_criacao", updatable = false, nullable = false)
 	private LocalDateTime dataCriacao;
 	
+	@PastOrPresent
 	@Column(name = "data_ultima_atualizacao", insertable = false)
 	private LocalDateTime dataUltimaAtualizacao;
 
+	@NotBlank
 	@Column(length = 100, nullable = false)
 	private String nome;
 
@@ -103,6 +111,7 @@ public class Produto extends EntidadeBaseInteger {
 	@OneToOne(mappedBy = "produto")
 	private Estoque estoque;
 	
+	@NotEmpty
 	@ManyToMany
 	@JoinTable(name = "produto_categoria", 
 			joinColumns = @JoinColumn(name = "produto_id", nullable = false,
@@ -111,6 +120,7 @@ public class Produto extends EntidadeBaseInteger {
 				foreignKey = @ForeignKey(name = "fk_produto_categoria_categoria")))
 	private List<Categoria> categorias;
 	
+	@NotEmpty
 	@ElementCollection // para que o JPA gerencie essa propriedade
 	@CollectionTable(name = "produto_tag", // ele cria uma outra tabela para essa propriedade
 			joinColumns = @JoinColumn(name = "produto_id", nullable = false,
@@ -118,6 +128,7 @@ public class Produto extends EntidadeBaseInteger {
 	@Column(name = "tag", length = 50, nullable = false)
 	private List<String> tags;
 	
+	@NotEmpty
 	@ElementCollection
 	@CollectionTable(name = "produto_atributo",
 			joinColumns = @JoinColumn(name = "produto_id", nullable = false,
