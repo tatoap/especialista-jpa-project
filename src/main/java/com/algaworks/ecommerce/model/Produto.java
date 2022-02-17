@@ -8,6 +8,7 @@ import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ColumnResult;
 import javax.persistence.ConstructorResult;
+import javax.persistence.Convert;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -36,6 +37,7 @@ import javax.validation.constraints.Positive;
 
 import com.algaworks.ecommerce.dto.ProdutoDTO;
 import com.algaworks.ecommerce.listener.GenericoListener;
+import com.algaworks.ecommerce.model.converter.BooleanToSimNaoConverter;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -110,10 +112,15 @@ public class Produto extends EntidadeBaseInteger {
 	@Lob
 	private byte[] fotoProduto;
 	
+	@Convert(converter = BooleanToSimNaoConverter.class)
+	@NotNull
+	@Column(length = 3, nullable = false)
+	private Boolean ativo = Boolean.FALSE;
+	
 	@OneToOne(mappedBy = "produto")
 	private Estoque estoque;
 	
-	@NotEmpty
+	//@NotEmpty
 	@ManyToMany
 	@JoinTable(name = "produto_categoria", 
 			joinColumns = @JoinColumn(name = "produto_id", nullable = false,
@@ -122,7 +129,7 @@ public class Produto extends EntidadeBaseInteger {
 				foreignKey = @ForeignKey(name = "fk_produto_categoria_categoria")))
 	private List<Categoria> categorias;
 	
-	@NotEmpty
+	//@NotEmpty
 	@ElementCollection // para que o JPA gerencie essa propriedade
 	@CollectionTable(name = "produto_tag", // ele cria uma outra tabela para essa propriedade
 			joinColumns = @JoinColumn(name = "produto_id", nullable = false,
@@ -130,7 +137,7 @@ public class Produto extends EntidadeBaseInteger {
 	@Column(name = "tag", length = 50, nullable = false)
 	private List<String> tags;
 	
-	@NotEmpty
+	//@NotEmpty
 	@ElementCollection
 	@CollectionTable(name = "produto_atributo",
 			joinColumns = @JoinColumn(name = "produto_id", nullable = false,
