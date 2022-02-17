@@ -23,6 +23,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Positive;
@@ -40,12 +41,14 @@ import lombok.Setter;
 @EntityListeners({ GerarNotaFiscalListener.class, GenericoListener.class })
 public class Pedido extends EntidadeBaseInteger {
 	
+	@NotNull
 	@ManyToOne(optional = false) // por padrão é "true", o que é menos performatico pois a relação é left outer join, como "false" é inner join, deve ser alterado para todos os atributos que são obrigatórios para persistência
 	@JoinColumn(name = "cliente_id", nullable = false,
 			foreignKey = @ForeignKey(name = "fk_pedido_cliente"))
 	private Cliente cliente;
 	
 	//@OneToMany(mappedBy = "pedido", fetch = FetchType.EAGER) // por padrão, o comportamento para busca de lista é Lazy
+	@NotEmpty
 	@OneToMany(mappedBy = "pedido")
 	private List<ItemPedido> itensPedido;
 	

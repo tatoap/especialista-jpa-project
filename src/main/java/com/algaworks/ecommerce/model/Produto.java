@@ -32,6 +32,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
+import javax.validation.constraints.Positive;
 
 import com.algaworks.ecommerce.dto.ProdutoDTO;
 import com.algaworks.ecommerce.listener.GenericoListener;
@@ -103,6 +104,7 @@ public class Produto extends EntidadeBaseInteger {
 	@Lob
 	private String descricao;
 
+	@Positive
 	private BigDecimal preco;
 	
 	@Lob
