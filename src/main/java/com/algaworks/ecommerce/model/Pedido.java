@@ -75,11 +75,11 @@ import lombok.Setter;
 @Table(name = "pedido")
 @EntityListeners({ GerarNotaFiscalListener.class, GenericoListener.class })
 public class Pedido extends EntidadeBaseInteger 
-	implements PersistentAttributeInterceptable 
-	{
+	//implements PersistentAttributeInterceptable 
+{
 	
 	@NotNull
-	@ManyToOne(optional = false, fetch = FetchType.LAZY) // por padrão é "true", o que é menos performatico pois a relação é left outer join, como "false" é inner join, deve ser alterado para todos os atributos que são obrigatórios para persistência
+	@ManyToOne(optional = false) // por padrão é "true", o que é menos performatico pois a relação é left outer join, como "false" é inner join, deve ser alterado para todos os atributos que são obrigatórios para persistência
 	@JoinColumn(name = "cliente_id", nullable = false,
 			foreignKey = @ForeignKey(name = "fk_pedido_cliente"))
 	private Cliente cliente;
@@ -102,8 +102,8 @@ public class Pedido extends EntidadeBaseInteger
     @Column(name = "data_conclusao")
     private LocalDateTime dataConclusao;
     
-	@LazyToOne(LazyToOneOption.NO_PROXY)
-    @OneToOne(mappedBy = "pedido", fetch = FetchType.LAZY)
+	//@LazyToOne(LazyToOneOption.NO_PROXY)
+    @OneToOne(mappedBy = "pedido")
 	private NotaFiscal notaFiscal;
 	
     @NotNull
@@ -116,8 +116,8 @@ public class Pedido extends EntidadeBaseInteger
 	@Enumerated(EnumType.STRING)
 	private StatusPedido status;
 	
-    @LazyToOne(LazyToOneOption.NO_PROXY)
-	@OneToOne(mappedBy = "pedido", fetch = FetchType.LAZY)
+    //@LazyToOne(LazyToOneOption.NO_PROXY)
+	@OneToOne(mappedBy = "pedido")
 	private Pagamento pagamento;
 	
 	@Embedded
@@ -176,7 +176,7 @@ public class Pedido extends EntidadeBaseInteger
 		System.out.println("Após carregar o pedido.");
 	}
 	
-	@Setter(AccessLevel.NONE)
+	/*@Setter(AccessLevel.NONE)
 	@Getter(AccessLevel.NONE)
 	@Transient
 	private PersistentAttributeInterceptor persistentAttributeInterceptor;
@@ -225,6 +225,6 @@ public class Pedido extends EntidadeBaseInteger
 	@Override
 	public void $$_hibernate_setInterceptor(PersistentAttributeInterceptor persistentAttributeInterceptor) {
 		this.persistentAttributeInterceptor = persistentAttributeInterceptor;
-	}
+	}*/
 	
 }
