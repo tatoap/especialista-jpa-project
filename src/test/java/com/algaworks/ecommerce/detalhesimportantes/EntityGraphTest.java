@@ -17,7 +17,7 @@ import com.algaworks.ecommerce.model.Pedido_;
 
 public class EntityGraphTest extends EntityManagerTest {
 	
-	@Test
+	//@Test
 	public void buscarAtributosEssenciaisComNamedEntityGraph() {
 		EntityGraph<?> entityGraph = entityManager.createEntityGraph("Pedido.dadosEssenciais");
 		entityGraph.addAttributeNodes("pagamento");
