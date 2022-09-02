@@ -1,0 +1,5 @@
+package com.algaworks.ecommerce.cache;
+
+public class CacheTest {
+
+}

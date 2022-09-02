@@ -1,0 +1,85 @@
+package com.algaworks.ecommerce.cache;
+
+import javax.persistence.Cache;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+
+import org.junit.AfterClass;
+import org.junit.Assert;
+import org.junit.BeforeClass;
+import org.junit.Test;
+
+import com.algaworks.ecommerce.model.Pedido;
+
+public class CacheTest {
+
+	protected static EntityManagerFactory entityManagerFactory;
+	
+	@BeforeClass
+	public static void setUpBeforeClass() {
+		entityManagerFactory = Persistence.createEntityManagerFactory("Ecommerce-PU");
+	}
+	
+	@AfterClass
+	public static void tearDownAfterClass() {
+		entityManagerFactory.close();
+	}
+	
+	//@Test
+    public void buscarDoCache() {
+        EntityManager entityManager1 = entityManagerFactory.createEntityManager();
+        EntityManager entityManager2 = entityManagerFactory.createEntityManager();
+
+        System.out.println("Buscando a partir da instância 1:");
+        entityManager1.find(Pedido.class, 1);
+
+        System.out.println("Buscando a partir da instância 2:");
+        entityManager2.find(Pedido.class, 1);
+    }
+	
+	//@Test
+    public void adicionarPedidosNoCache() {
+        EntityManager entityManager1 = entityManagerFactory.createEntityManager();
+        EntityManager entityManager2 = entityManagerFactory.createEntityManager();
+
+        System.out.println("Buscando a partir da instância 1:");
+        entityManager1.createQuery("select p from Pedido p", Pedido.class).getResultList();
+
+        System.out.println("Buscando a partir da instância 2:");
+        entityManager2.find(Pedido.class, 1);
+    }
+	
+	//@Test
+    public void removendoDoCache() {
+		Cache cache = entityManagerFactory.getCache();
+		
+        EntityManager entityManager1 = entityManagerFactory.createEntityManager();
+        EntityManager entityManager2 = entityManagerFactory.createEntityManager();
+
+        System.out.println("Buscando a partir da instância 1:");
+        entityManager1.createQuery("select p from Pedido p", Pedido.class).getResultList();
+        
+        System.out.println("Removendo do cache");
+        
+        cache.evictAll(); // Remove tudo que esta no cache
+        //cache.evict(Pedido.class); // Remove tudo que esta relacionado a classe do cache
+        //cache.evict(Pedido.class, 1); // Remove somente a entidade consultada do cache
+
+        System.out.println("Buscando a partir da instância 2:");
+        entityManager2.find(Pedido.class, 1);
+    }
+	
+    @Test
+    public void verificarSeEstaNoCache() {
+    	Cache cache = entityManagerFactory.getCache();
+    	
+        EntityManager entityManager1 = entityManagerFactory.createEntityManager();
+
+        System.out.println("Buscando a partir da instância 1:");
+        entityManager1.createQuery("select p from Pedido p", Pedido.class).getResultList();
+
+        Assert.assertTrue(cache.contains(Pedido.class, 1));
+        Assert.assertFalse(cache.contains(Pedido.class, 2));
+    }
+}
